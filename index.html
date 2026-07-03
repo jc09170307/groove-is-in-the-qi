@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Groove Qi">
+<meta name="theme-color" content="#7c3aed">
+<meta name="application-name" content="Groove Qi">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-512.png">
+<title>Groove Is in the Qi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+button,input,textarea,select{font-family:inherit;-webkit-appearance:none;appearance:none}
+:root{
+  --v:#7c3aed;--v2:#9f67f5;--v3:#c4a8fc;
+  --t:#0d9488;--t2:#14b8a6;
+  --g:#d97706;--g2:#fbbf24;
+  --bg:#09090f;--bg2:#0f0f1a;--bg3:#16162a;--bg4:#1c1c30;
+  --tx:#f0eeff;--tx2:#b0a8d0;--tx3:#6b6494;
+  --bd:rgba(124,58,237,.18);--bd2:rgba(124,58,237,.08);
+  --card:#0f0f1a;--hh:58px;
+}
+[data-theme="light"]{
+  --bg:#f5f3ff;--bg2:#fff;--bg3:#ede9fe;--bg4:#ddd6fe;
+  --tx:#1e1b4b;--tx2:#4c4777;--tx3:#8b80c0;
+  --bd:rgba(124,58,237,.2);--bd2:rgba(124,58,237,.08);--card:#fff;
+}
+html,body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;font-size:16px;min-height:100vh;overflow-x:hidden}
+body{padding-bottom:1.5rem}
+.hdr{height:var(--hh);padding:0 1rem;display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:1px solid var(--bd2);position:sticky;top:0;z-index:200;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hdr-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--tx);letter-spacing:-.2px;line-height:1.2}
+.hdr-sub{font-size:9px;color:var(--v2);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.theme-btn{background:var(--bg3);border:1px solid var(--bd);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:500;color:var(--tx2);cursor:pointer}
+.nav-wrap{position:sticky;top:58px;z-index:150;background:var(--bg);border-bottom:1px solid var(--bd2);display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.45rem .75rem;gap:6px}
+.nav-wrap::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;display:flex;flex-direction:row;align-items:center;gap:5px;background:var(--bg3);border:1px solid var(--bd);border-radius:100px;cursor:pointer;padding:6px 13px;color:var(--tx2);transition:all .2s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.nav-btn.active{background:var(--v);border-color:var(--v);color:#fff}
+.nav-btn .ni{font-size:15px;line-height:1}
+.nav-btn .nl{font-size:11px;font-weight:600;letter-spacing:.01em}
+.nav-btn::after{display:none}
+.sec{display:none;padding:1rem;animation:fi .22s ease}
+.sec.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.slbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--v3);margin-bottom:.6rem;margin-top:.1rem;display:flex;align-items:center;gap:.4rem}
+.slbl::after{content:'';flex:1;height:1px;background:var(--bd)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:.9rem 1rem;margin-bottom:.6rem}
+.btn{width:100%;padding:.75rem 1rem;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.bp{background:var(--v);color:#fff}.bp:active{transform:scale(.98)}
+.bt{background:var(--t);color:#fff}.bt:active{transform:scale(.98)}
+.bg{background:var(--bg3);color:var(--tx2);border:1px solid var(--bd)}.bg:active{background:var(--bg4)}
+.tbar{display:flex;gap:6px;overflow-x:auto;margin-bottom:1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.tbar::-webkit-scrollbar{display:none}
+.tbtn{flex-shrink:0;padding:7px 16px;border-radius:100px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx2);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.tbtn.active{background:var(--v);color:#fff;border-color:var(--v)}
+.chip{display:inline-block;padding:3px 10px;border-radius:100px;font-size:10.5px;font-weight:600;background:var(--bg3);color:var(--tx2);border:1px solid var(--bd)}
+.cv{background:rgba(124,58,237,.15);color:var(--v3);border-color:rgba(124,58,237,.3)}
+.ct{background:rgba(13,148,136,.15);color:var(--t2);border-color:rgba(13,148,136,.3)}
+.cg{background:rgba(217,119,6,.15);color:var(--g2);border-color:rgba(217,119,6,.3)}
+.inp{width:100%;background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:.7rem .9rem;color:var(--tx);font-size:16px;transition:border-color .2s;resize:none}
+.inp:focus{outline:none;border-color:var(--v2)}
+.inp::placeholder{color:var(--tx3)}
+.ilbl{font-size:13px;font-weight:600;color:var(--tx3);margin-bottom:.35rem;display:block}
+.spa{min-height:140px;line-height:1.75;caret-color:var(--v2);-webkit-user-select:text;user-select:text}
+.hrow{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-bottom:.4rem;transition:all .2s;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.hrow.done{background:rgba(13,148,136,.1);border-color:rgba(13,148,136,.3)}
+.hchk{width:26px;height:26px;border-radius:50%;border:2px solid var(--bd);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;flex-shrink:0}
+.hrow.done .hchk{background:var(--t);border-color:var(--t);color:#fff}
+.sdot{width:10px;height:10px;border-radius:50%;background:var(--bg4);flex-shrink:0;transition:background .3s}
+.sdot.hit{background:var(--t2)}.sdot.today{background:var(--v2)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.75rem}
+.ccard{background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:.65rem .5rem;text-align:center;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.ccard.best{background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.5)}
+.ccard.good{background:rgba(13,148,136,.15);border-color:rgba(13,148,136,.4)}
+.ctime{font-family:'DM Serif Display',serif;font-size:17px;color:var(--tx)}
+.clbl{font-size:9px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.mdbtn{font-size:22px;padding:8px;border-radius:12px;border:2px solid transparent;background:var(--bg3);cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center}
+.mdbtn.sel{border-color:var(--v2);background:rgba(124,58,237,.15)}
+.cw{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--bg3);margin-top:.5rem;position:relative}
+#sketch-canvas{display:block;touch-action:none;cursor:crosshair}
+.ctb{display:flex;gap:.5rem;padding:.5rem;border-bottom:1px solid var(--bd2);align-items:center}
+.ctool{width:32px;height:32px;border-radius:8px;border:1px solid var(--bd);background:var(--bg4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;-webkit-tap-highlight-color:transparent}
+.ctool.active{background:var(--v);border-color:var(--v)}
+.cdot{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s;-webkit-tap-highlight-color:transparent}
+.cdot.active{transform:scale(1.3);border-color:var(--tx)}
+.wds{padding:.75rem 1rem;background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-bottom:.4rem;display:flex;align-items:center;gap:.75rem;transition:all .2s}
+.wds.done{border-color:rgba(13,148,136,.4);background:rgba(13,148,136,.08)}
+.wdico{font-size:20px;width:36px;height:36px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wdchk{width:24px;height:24px;border-radius:50%;border:2px solid var(--bd);background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:13px}
+.wds.done .wdchk{background:var(--t);border-color:var(--t);color:#fff}
+.trw{display:flex;flex-direction:column;align-items:center;padding:1.2rem 0 .8rem}
+.tring{position:relative;width:120px;height:120px}
+.tring svg{transform:rotate(-90deg)}
+.rbg{fill:none;stroke:var(--bg3);stroke-width:6}
+.rfl{fill:none;stroke:var(--v2);stroke-width:6;stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:339.3;transition:stroke-dashoffset .5s}
+.tnum{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:28px;color:var(--tx)}
+.dh{border-radius:16px;padding:1.2rem 1rem;margin-bottom:.75rem;position:relative;overflow:hidden;border:1px solid var(--bd)}
+.dhbg{position:absolute;inset:0;opacity:.07;font-size:100px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.dname{font-family:'DM Serif Display',serif;font-size:24px;color:var(--tx);font-style:italic}
+.loge{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--bd2)}
+.loge:last-child{border-bottom:none}
+.logd{font-size:10px;font-weight:700;color:var(--v3);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;min-width:38px;text-align:center;background:var(--bg3);border-radius:8px;padding:.3rem .4rem}
+.je{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:.5rem;overflow:hidden}
+.jehdr{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.jebody{display:none;padding:.75rem 1rem 1rem;border-top:1px solid var(--bd2)}
+.jebody.open{display:block}
+.jesec{font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.07em;margin:.5rem 0 .2rem}
+.jetxt{font-size:15px;color:var(--tx2);line-height:1.65}
+.mbtn{padding:.6rem;border-radius:10px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx2);font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.mbtn.sel{background:rgba(13,148,136,.2);border-color:var(--t);color:var(--t2)}
+.eslider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:linear-gradient(to right,var(--v) 0%,var(--t2) 50%,var(--g2) 100%);outline:none;cursor:pointer;margin:1rem 0 .5rem}
+.eslider::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--tx);border:3px solid var(--v2);cursor:pointer;transition:transform .1s}
+.eslider::-webkit-slider-thumb:active{transform:scale(1.2)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--v);color:#fff;padding:.5rem 1.1rem;border-radius:100px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.ocard{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:1rem;margin-bottom:.6rem}
+.ocard.aorg{border-color:var(--v2);background:rgba(124,58,237,.08)}
+.oname{font-family:'DM Serif Display',serif;font-size:20px;color:var(--tx);font-style:italic}
+.odo{background:var(--bg3);border-radius:10px;padding:.6rem .75rem;margin-top:.5rem}
+.odolbl{font-size:9.5px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem}
+.bc{width:140px;height:140px;border-radius:50%;border:3px solid var(--v2);display:flex;align-items:center;justify-content:center;margin:0 auto;transition:transform 4s ease-in-out}
+.rstat{background:var(--bg3);border-radius:12px;padding:.75rem;text-align:center;flex:1}
+.rstat-n{font-family:'DM Serif Display',serif;font-size:28px;color:var(--v2)}
+.rstat-l{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.rq{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:.75rem .9rem;margin-bottom:.5rem}
+.rqlbl{font-size:11px;font-weight:700;color:var(--v3);margin-bottom:.4rem}
+.plrow{display:flex;align-items:center;justify-content:space-between;padding:.7rem .9rem;background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-bottom:.4rem;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .2s}
+.plrow:active{background:var(--bg3)}
+.plico{font-size:22px;width:38px;height:38px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.75rem}
+.dash-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:.85rem .9rem;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .2s}
+.dash-card:active{border-color:var(--v2)}
+.dash-card-ico{font-size:28px;margin-bottom:.35rem}
+.dash-card-val{font-family:'DM Serif Display',serif;font-size:22px;color:var(--tx);line-height:1.1}
+.dash-card-lbl{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.dash-card.accent{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3)}
+.dash-greeting{font-family:'DM Serif Display',serif;font-size:22px;color:var(--tx);margin-bottom:.2rem;font-style:italic}
+.dash-date{font-size:13px;color:var(--tx3);margin-bottom:1rem}
+.dash-habit-row{display:flex;align-items:center;gap:.6rem;padding:.5rem 0;border-bottom:1px solid var(--bd2)}
+.dash-habit-row:last-child{border-bottom:none}
+
+/* ACUPRESSURE */
+.point-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:.5rem;overflow:hidden}
+.point-hdr{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.point-body{display:none;padding:.75rem 1rem 1rem;border-top:1px solid var(--bd2);background:var(--bg2)}
+.point-body.open{display:block}
+.point-name{font-size:16px;font-weight:700;color:var(--tx)}
+.point-loc{font-size:12px;color:var(--v3);font-weight:600;margin-top:2px}
+.point-ico{width:42px;height:42px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.zone-btn{padding:8px 16px;border-radius:100px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx2);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.zone-btn.active{background:var(--v);color:#fff;border-color:var(--v)}
+
+/* TCM JOURNAL */
+.pattern-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:.5rem;overflow:hidden}
+.pattern-hdr{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pattern-body{display:none;padding:.75rem 1rem 1rem;border-top:1px solid var(--bd2)}
+.pattern-body.open{display:block}
+.pattern-tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;background:rgba(124,58,237,.15);color:var(--v3);border:1px solid rgba(124,58,237,.3);margin-right:.3rem}
+
+/* APOTHECARY */
+.supp-row{display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-bottom:.4rem;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .2s}
+.supp-row.taken{background:rgba(13,148,136,.1);border-color:rgba(13,148,136,.3)}
+.supp-ico{font-size:22px;width:40px;height:40px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.supp-name{font-size:15px;font-weight:600;color:var(--tx)}
+.supp-dose{font-size:12px;color:var(--tx3);margin-top:2px}
+.supp-why{font-size:11px;color:var(--v3);margin-top:2px;font-style:italic}
+.supp-chk{width:28px;height:28px;border-radius:50%;border:2px solid var(--bd);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:all .2s}
+.supp-row.taken .supp-chk{background:var(--t);border-color:var(--t);color:#fff}
+
+/* SOMATIC MAP */
+.body-map-wrap{position:relative;width:100%;max-width:280px;margin:0 auto}
+.body-map-wrap svg{width:100%;height:auto}
+.bzone{fill:rgba(124,58,237,.08);stroke:rgba(124,58,237,.2);stroke-width:1.5;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.bzone:hover,.bzone.active{fill:rgba(124,58,237,.3);stroke:var(--v2);stroke-width:2}
+.bzone.tension{fill:rgba(217,119,6,.2);stroke:var(--g2);stroke-width:2}
+.bzone.pain{fill:rgba(225,29,72,.2);stroke:#fb7185;stroke-width:2}
+.zone-result{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1rem;margin-top:.75rem;display:none}
+.zone-result.show{display:block}
+
+/* KOREAN MED */
+.sas-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1rem;margin-bottom:.6rem;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .2s}
+.sas-card.sel{border-color:var(--v2);background:rgba(124,58,237,.08)}
+.sas-name{font-family:'DM Serif Display',serif;font-size:20px;color:var(--tx)}
+.sas-korean{font-size:14px;color:var(--v3);margin-top:2px}
+.wisdom-card{background:var(--bg3);border-left:3px solid var(--v2);border-radius:0 12px 12px 0;padding:.85rem 1rem;margin-bottom:.6rem}
+.wisdom-ko{font-size:15px;color:var(--tx);line-height:1.6;font-style:italic}
+.wisdom-en{font-size:13px;color:var(--tx3);margin-top:.4rem;line-height:1.5}
+.wisdom-src{font-size:10px;color:var(--tx3);margin-top:.35rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+
+/* QI GONG */
+.qg-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:.5rem;overflow:hidden}
+.qg-hdr{display:flex;align-items:center;gap:.75rem;padding:.9rem 1rem;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.qg-body{display:none;padding:.75rem 1rem 1rem;border-top:1px solid var(--bd2)}
+.qg-body.open{display:block}
+.qg-step{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--bd2)}
+.qg-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.qg-step-num{width:24px;height:24px;border-radius:50%;background:var(--v);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+<header class="hdr">
+  <div><div class="hdr-title">Groove Is in the Qi 🎵</div><div class="hdr-sub">DAcHM · Lifestyle Suite</div></div>
+  <button class="theme-btn" id="theme-btn">☀️</button>
+</header>
+
+<!-- DASHBOARD -->
+<div class="sec" id="sec-dash">
+  <div id="dash-greeting" class="dash-greeting"></div>
+  <div id="dash-date" class="dash-date"></div>
+
+  <div class="dash-grid" id="dash-grid"></div>
+
+  <div class="slbl">Today's habits</div>
+  <div class="card" id="dash-habits"></div>
+
+  <div class="slbl" style="margin-top:.75rem">Right now — body clock</div>
+  <div class="card" id="dash-clock" style="cursor:pointer" onclick="sw('clock',document.querySelector('[data-s=clock]'))"></div>
+
+  <div class="slbl" style="margin-top:.75rem">Backup & restore 💾</div>
+  <div class="card">
+    <div style="font-size:14px;color:var(--tx2);line-height:1.6;margin-bottom:.75rem">Export all your data — journal, sleep log, habits, sessions, reviews. Keep a copy somewhere safe.</div>
+    <button class="btn bg" style="margin-bottom:.5rem" onclick="requestNotifPerms()">🔔 Enable reminders</button>
+    <button class="btn bp" style="margin-bottom:.5rem" onclick="exportData()">⬇️ Export backup</button>
+    <label class="btn bg" style="display:flex;align-items:center;justify-content:center;gap:.5rem;cursor:pointer">
+      ⬆️ Restore from file
+      <input type="file" id="restore-file" accept=".json" style="display:none" onchange="importData(this)">
+    </label>
+  </div>
+</div>
+
+<!-- ACUPRESSURE -->
+<div class="sec" id="sec-points">
+  <div class="slbl">Acupressure points 👆</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Tap any zone · Each point links to its organ clock time</div>
+  <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem" id="zone-tabs"></div>
+  <div id="points-list"></div>
+</div>
+
+<!-- TCM PATTERN JOURNAL -->
+<div class="sec" id="sec-tcm">
+  <div class="slbl">TCM pattern journal 📚</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Your clinical observation notebook · Self-diagnosis through the student lens</div>
+
+  <div class="card">
+    <label class="ilbl">Date</label>
+    <input type="date" class="inp" id="tcm-date" style="margin-bottom:.65rem">
+    <label class="ilbl">Chief complaint / main symptom</label>
+    <input type="text" class="inp" id="tcm-complaint" placeholder="e.g. fatigue, irritability, lower back pain…" style="margin-bottom:.65rem">
+    <label class="ilbl">TCM pattern</label>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.65rem" id="pattern-chips"></div>
+    <input type="text" class="inp" id="tcm-pattern-custom" placeholder="Or type your own pattern…" style="margin-bottom:.65rem">
+    <label class="ilbl">Tongue</label>
+    <input type="text" class="inp" id="tcm-tongue" placeholder="e.g. pale, red tip, thin white coat, purple…" style="margin-bottom:.65rem">
+    <label class="ilbl">Pulse</label>
+    <input type="text" class="inp" id="tcm-pulse" placeholder="e.g. wiry, slippery, deep, thin…" style="margin-bottom:.65rem">
+    <label class="ilbl">Treatment principle</label>
+    <input type="text" class="inp" id="tcm-tx" placeholder="e.g. Soothe Liver, tonify KD Yin, move Blood…" style="margin-bottom:.65rem">
+    <label class="ilbl">Points / herbs considered</label>
+    <textarea class="inp" id="tcm-points" placeholder="e.g. LV-3, KD-3, GB-34 · Liu Wei Di Huang Wan…" style="min-height:60px;margin-bottom:.65rem"></textarea>
+    <label class="ilbl">Clinical notes</label>
+    <textarea class="inp spa" id="tcm-notes" placeholder="Observations, connections to class material, questions for Dr. Lawson…" style="min-height:100px;margin-bottom:.65rem"></textarea>
+    <button class="btn bp" onclick="saveTCM()">Save observation</button>
+  </div>
+
+  <div class="slbl" style="margin-top:1rem">Past observations</div>
+  <div id="tcm-entries"><div class="card" style="text-align:center;color:var(--tx3);font-size:14px">No observations yet.</div></div>
+</div>
+
+
+<!-- ══ APOTHECARY ══ -->
+<div class="sec" id="sec-apoth">
+  <div class="slbl">⚗️ The Apothecary</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Your daily ritual, bottled and labeled. Tap to check off.</div>
+
+  <div class="slbl">🌅 Morning stack</div>
+  <div id="supp-am"></div>
+
+  <div class="slbl" style="margin-top:.75rem">🌙 Evening stack</div>
+  <div id="supp-pm"></div>
+
+  <div class="slbl" style="margin-top:.75rem">⚗️ Your cabinet — formulas</div>
+  <div id="supp-formulas"></div>
+
+  <div class="slbl" style="margin-top:.75rem">🍵 Daily teas</div>
+  <div id="supp-teas"></div>
+
+  <button class="btn bg" style="margin-top:.75rem;font-size:13px" onclick="resetSupps()">Reset for tomorrow</button>
+</div>
+
+<!-- ══ SOMATIC MAP ══ -->
+<div class="sec" id="sec-soma">
+  <div class="slbl">Somatic body map 🫀</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Tap where you feel it · Get the meridian, organ, and point</div>
+
+  <div style="display:flex;gap:.5rem;margin-bottom:.85rem;flex-wrap:wrap" id="soma-mode-btns">
+    <button class="zone-btn active" onclick="setSomaMode('tension',this)">😤 Tension</button>
+    <button class="zone-btn" onclick="setSomaMode('pain',this)">🔴 Pain</button>
+    <button class="zone-btn" onclick="setSomaMode('numb',this)">😶 Numb</button>
+    <button class="zone-btn" onclick="setSomaMode('heat',this)">🔥 Heat</button>
+    <button class="zone-btn" onclick="setSomaMode('cold',this)">🧊 Cold</button>
+  </div>
+
+  <div class="body-map-wrap">
+    <svg viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" id="body-svg">
+      <!-- Head -->
+      <ellipse class="bzone" data-zone="head" cx="100" cy="35" rx="28" ry="32" onclick="somaClick('head')"/>
+      <!-- Neck -->
+      <rect class="bzone" data-zone="neck" x="88" y="65" width="24" height="20" rx="6" onclick="somaClick('neck')"/>
+      <!-- Left shoulder -->
+      <ellipse class="bzone" data-zone="l-shoulder" cx="55" cy="90" rx="22" ry="16" onclick="somaClick('shoulder')"/>
+      <!-- Right shoulder -->
+      <ellipse class="bzone" data-zone="r-shoulder" cx="145" cy="90" rx="22" ry="16" onclick="somaClick('shoulder')"/>
+      <!-- Chest -->
+      <rect class="bzone" data-zone="chest" x="72" y="84" width="56" height="50" rx="8" onclick="somaClick('chest')"/>
+      <!-- Upper abdomen -->
+      <rect class="bzone" data-zone="upper-abd" x="74" y="134" width="52" height="36" rx="6" onclick="somaClick('upper-abd')"/>
+      <!-- Lower abdomen -->
+      <rect class="bzone" data-zone="lower-abd" x="74" y="170" width="52" height="36" rx="6" onclick="somaClick('lower-abd')"/>
+      <!-- Left upper arm -->
+      <rect class="bzone" data-zone="l-arm" x="34" y="100" width="18" height="50" rx="8" onclick="somaClick('arm')"/>
+      <!-- Right upper arm -->
+      <rect class="bzone" data-zone="r-arm" x="148" y="100" width="18" height="50" rx="8" onclick="somaClick('arm')"/>
+      <!-- Left forearm/wrist -->
+      <rect class="bzone" data-zone="l-wrist" x="26" y="152" width="16" height="46" rx="8" onclick="somaClick('wrist')"/>
+      <!-- Right forearm/wrist -->
+      <rect class="bzone" data-zone="r-wrist" x="158" y="152" width="16" height="46" rx="8" onclick="somaClick('wrist')"/>
+      <!-- Upper back (lower body shown as back) -->
+      <!-- Left hip -->
+      <ellipse class="bzone" data-zone="l-hip" cx="80" cy="220" rx="24" ry="18" onclick="somaClick('hip')"/>
+      <!-- Right hip -->
+      <ellipse class="bzone" data-zone="r-hip" cx="120" cy="220" rx="24" ry="18" onclick="somaClick('hip')"/>
+      <!-- Left thigh -->
+      <rect class="bzone" data-zone="l-thigh" x="68" y="234" width="26" height="60" rx="10" onclick="somaClick('thigh')"/>
+      <!-- Right thigh -->
+      <rect class="bzone" data-zone="r-thigh" x="106" y="234" width="26" height="60" rx="10" onclick="somaClick('thigh')"/>
+      <!-- Left knee -->
+      <ellipse class="bzone" data-zone="l-knee" cx="81" cy="302" rx="16" ry="12" onclick="somaClick('knee')"/>
+      <!-- Right knee -->
+      <ellipse class="bzone" data-zone="r-knee" cx="119" cy="302" rx="16" ry="12" onclick="somaClick('knee')"/>
+      <!-- Left lower leg -->
+      <rect class="bzone" data-zone="l-leg" x="68" y="312" width="24" height="60" rx="10" onclick="somaClick('lower-leg')"/>
+      <!-- Right lower leg -->
+      <rect class="bzone" data-zone="r-leg" x="108" y="312" width="24" height="60" rx="10" onclick="somaClick('lower-leg')"/>
+      <!-- Left foot -->
+      <ellipse class="bzone" data-zone="l-foot" cx="78" cy="382" rx="18" ry="10" onclick="somaClick('foot')"/>
+      <!-- Right foot -->
+      <ellipse class="bzone" data-zone="r-foot" cx="122" cy="382" rx="18" ry="10" onclick="somaClick('foot')"/>
+      <!-- Back label -->
+      <text x="100" y="410" text-anchor="middle" font-size="10" fill="rgba(176,168,208,.4)" font-family="DM Sans,sans-serif">Tap any zone</text>
+    </svg>
+  </div>
+
+  <div class="zone-result" id="soma-result"></div>
+
+  <div class="slbl" style="margin-top:1rem">Somatic log</div>
+  <div id="soma-log"><div class="card" style="text-align:center;color:var(--tx3);font-size:14px">No entries yet.</div></div>
+</div>
+
+<!-- ══ KOREAN MEDICINE ══ -->
+<div class="sec" id="sec-korean">
+  <div class="slbl">Korean medicine 한의학 🇰🇷</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">사상체질 · 동의보감 · 명심보감 — classical wisdom for modern practice</div>
+
+  <div class="slbl">사상체질 — Sasang Constitution</div>
+  <div style="font-size:13px;color:var(--tx3);margin-bottom:.75rem;line-height:1.6">Lee Je-ma's four-constitution medicine (1894). Each type has distinct organ strengths, emotional tendencies, and dietary needs. Tap each to explore.</div>
+  <div id="sasang-cards"></div>
+
+  <div class="slbl" style="margin-top:1rem">동의보감 — Daily Wisdom</div>
+  <div style="font-size:13px;color:var(--tx3);margin-bottom:.75rem">Dongui Bogam (1613) by Heo Jun · Classical Korean medicine encyclopedia</div>
+  <div id="dongui-wisdom"></div>
+
+  <div class="slbl" style="margin-top:1rem">명심보감 — Mind & Heart</div>
+  <div style="font-size:13px;color:var(--tx3);margin-bottom:.75rem">Myeongshim Bogam (1393) · Moral and philosophical guidance</div>
+  <div id="myeong-wisdom"></div>
+</div>
+
+<!-- ══ QI GONG ══ -->
+<div class="sec" id="sec-qigong">
+  <div class="slbl">Qi Gong & movement 🌀</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Short practices mapped to organ time · 5–15 minutes · No equipment</div>
+  <div class="tbar" id="qg-tabs"></div>
+  <div id="qg-list"></div>
+</div>
+
+<!-- ══ HERBS ══ -->
+<div class="sec" id="sec-herbs">
+  <div class="slbl">⚗️ Materia Medica</div>
+  <div style="font-size:14px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Your cabinet · Formulas · Single herbs · Pattern matcher</div>
+
+  <div class="card" style="background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.25);margin-bottom:1rem">
+    <div style="font-size:12px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem">Pattern matcher 🔍</div>
+    <div style="font-size:13px;color:var(--tx3);margin-bottom:.6rem">Select your main symptoms → get formula suggestions</div>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.65rem" id="symptom-chips"></div>
+    <div id="formula-match" style="display:none;padding:.75rem;background:var(--bg3);border-radius:10px;font-size:14px;color:var(--tx2);line-height:1.6"></div>
+  </div>
+
+  <div class="slbl">Your cabinet 🗄️</div>
+  <div id="herb-cabinet"></div>
+
+  <div class="slbl" style="margin-top:1rem">Single herbs 🌿</div>
+  <div id="single-herbs"></div>
+</div>
+
+<nav class="nav-wrap">
+  <button class="nav-btn active" data-s="dance" onclick="sw('dance',this)"><span class="ni">💃</span><span class="nl">Dance</span></button>
+  <button class="nav-btn" data-s="sleep" onclick="sw('sleep',this)"><span class="ni">🌙</span><span class="nl">Sleep</span></button>
+  <button class="nav-btn" data-s="journal" onclick="sw('journal',this)"><span class="ni">📓</span><span class="nl">Journal</span></button>
+  <button class="nav-btn" data-s="habits" onclick="sw('habits',this)"><span class="ni">✅</span><span class="nl">Habits</span></button>
+  <button class="nav-btn" data-s="vibe" onclick="sw('vibe',this)"><span class="ni">✨</span><span class="nl">Vibe</span></button>
+  <button class="nav-btn" data-s="clock" onclick="sw('clock',this)"><span class="ni">🕐</span><span class="nl">Clock</span></button>
+  <button class="nav-btn" data-s="breath" onclick="sw('breath',this)"><span class="ni">🫁</span><span class="nl">Breath</span></button>
+  <button class="nav-btn" data-s="moon" onclick="sw('moon',this)"><span class="ni">🌕</span><span class="nl">Moon</span></button>
+  <button class="nav-btn" data-s="review" onclick="sw('review',this)"><span class="ni">📊</span><span class="nl">Review</span></button>
+  <button class="nav-btn" data-s="dash" onclick="sw('dash',this)"><span class="ni">🏠</span><span class="nl">Home</span></button>
+  <button class="nav-btn" data-s="points" onclick="sw('points',this)"><span class="ni">👆</span><span class="nl">Points</span></button>
+  <button class="nav-btn" data-s="tcm" onclick="sw('tcm',this)"><span class="ni">📚</span><span class="nl">TCM</span></button>
+  <button class="nav-btn" data-s="apoth" onclick="sw('apoth',this)"><span class="ni">⚗️</span><span class="nl">Apoth</span></button>
+  <button class="nav-btn" data-s="soma" onclick="sw('soma',this)"><span class="ni">🫀</span><span class="nl">Body</span></button>
+  <button class="nav-btn" data-s="korean" onclick="sw('korean',this)"><span class="ni">🇰🇷</span><span class="nl">한의학</span></button>
+  <button class="nav-btn" data-s="qigong" onclick="sw('qigong',this)"><span class="ni">🌀</span><span class="nl">Qi Gong</span></button>
+  <button class="nav-btn" data-s="herbs" onclick="sw('herbs',this)"><span class="ni">🌿</span><span class="nl">Herbs</span></button>
+</nav>
+
+<!-- DANCE -->
+<div class="sec active" id="sec-dance">
+  <div class="slbl">Dance pharmacy 💃</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Five dances · Five organs · Five emotional medicines</div>
+  <div class="card" style="background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.25);margin-bottom:1rem">
+    <div style="font-size:11px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem">What do I need right now? ✨</div>
+    <div class="mdbtn" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:0" id="need-grid"></div>
+    <div id="need-result" style="display:none;font-size:15px;color:var(--tx2);line-height:1.6;margin-top:.5rem;padding:.6rem;background:var(--bg3);border-radius:10px"></div>
+  </div>
+  <div class="tbar" id="dance-tabs"></div>
+  <div id="dance-panel"></div>
+  <div class="slbl" style="margin-top:1rem">Practice timer ⏱</div>
+  <div class="card">
+    <div class="trw">
+      <div class="tring"><svg viewBox="0 0 120 120" width="120" height="120"><circle class="rbg" cx="60" cy="60" r="54"/><circle class="rfl" id="dtf" cx="60" cy="60" r="54"/></svg><div class="tnum" id="dtn">3:00</div></div>
+    </div>
+    <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
+      <button class="btn bg" style="font-size:12px" onclick="setDT(180)">3m</button>
+      <button class="btn bg" style="font-size:12px" onclick="setDT(300)">5m</button>
+      <button class="btn bg" style="font-size:12px" onclick="setDT(600)">10m</button>
+      <button class="btn bg" style="font-size:12px" onclick="setDT(900)">15m</button>
+    </div>
+    <button class="btn bp" id="dtbtn" onclick="togDT()">Start</button>
+  </div>
+  <div class="slbl" style="margin-top:1rem">Session log 📋</div>
+  <div class="card" style="margin-bottom:.5rem">
+    <label class="ilbl">Dance practiced</label>
+    <div class="tbar" id="sdp" style="margin-bottom:.65rem"></div>
+    <label class="ilbl">Duration (minutes)</label>
+    <input type="number" class="inp" id="smins" placeholder="e.g. 20" min="1" max="180" style="margin-bottom:.65rem">
+    <label class="ilbl">How did it feel?</label>
+    <textarea class="inp" id="snotes" placeholder="Body sensations, energy shift, organ resonance…" style="min-height:60px;margin-bottom:.65rem"></textarea>
+    <button class="btn bt" onclick="saveDS()">Log session</button>
+  </div>
+  <div id="dsl"><div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No sessions yet.</div></div>
+</div>
+
+<!-- SLEEP -->
+<div class="sec" id="sec-sleep">
+  <div class="slbl">Sleep cycle calculator 🌙</div>
+  <div class="card">
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.75rem;line-height:1.6">One sleep cycle ≈ 90 min · Wake between cycles for natural rising</div>
+    <label class="ilbl">Wake up at</label>
+    <input type="time" class="inp" id="wake-time" value="07:00" oninput="calcSleep()">
+    <div id="cycle-results" style="margin-top:.75rem"></div>
+  </div>
+  <div class="slbl">Wind-down protocol 🌿</div>
+  <div id="wdl"></div>
+  <button class="btn bg" style="margin-top:.25rem;font-size:12px" onclick="resetWD()">Reset tonight</button>
+  <div class="slbl" style="margin-top:1rem">Log last night 📊</div>
+  <div class="card">
+    <label class="ilbl">Hours slept</label>
+    <input type="number" class="inp" id="sleep-hours" placeholder="e.g. 7.5" min="0" max="14" step=".5" style="margin-bottom:.65rem">
+    <label class="ilbl">Quality (1–5)</label>
+    <div style="display:flex;gap:.5rem;margin-bottom:.65rem" id="qbtns">
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.5rem" onclick="setQ(1)">1</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.5rem" onclick="setQ(2)">2</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.5rem" onclick="setQ(3)">3</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.5rem" onclick="setQ(4)">4</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.5rem" onclick="setQ(5)">5</button>
+    </div>
+    <label class="ilbl">Dream notes</label>
+    <textarea class="inp" id="dream-notes" placeholder="What came through while you slept…" style="min-height:70px;margin-bottom:.65rem"></textarea>
+    <button class="btn bt" onclick="saveSleep()">Save entry</button>
+  </div>
+  <div class="slbl" style="margin-top:1rem">Sleep history</div>
+  <div id="sle"><div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No entries yet.</div></div>
+</div>
+
+<!-- JOURNAL -->
+<div class="sec" id="sec-journal">
+  <div class="slbl">Today's entry 📓</div>
+  <div style="font-size:11px;font-weight:600;color:var(--v3);margin-bottom:.75rem" id="jdate"></div>
+  <div class="card">
+    <div class="ilbl" style="margin-bottom:.4rem">Arriving mood</div>
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem" id="jmoods"></div>
+    <label class="ilbl">Today's intention</label>
+    <input type="text" class="inp" id="jint" placeholder="I intend to…" style="margin-bottom:.65rem">
+    <label class="ilbl">Three gratitudes</label>
+    <input type="text" class="inp" id="jg1" placeholder="1." style="margin-bottom:.4rem">
+    <input type="text" class="inp" id="jg2" placeholder="2." style="margin-bottom:.4rem">
+    <input type="text" class="inp" id="jg3" placeholder="3." style="margin-bottom:.65rem">
+    <label class="ilbl">Free write ✍️</label>
+    <textarea class="inp spa" id="jfw" placeholder="What's alive in you right now? No editing, just flow…" style="min-height:180px;margin-bottom:.65rem"></textarea>
+    <label class="ilbl">S Pen sketch (optional)</label>
+    <div class="cw">
+      <div class="ctb">
+        <div class="ctool active" id="tp" onclick="setTool('pen')">✏️</div>
+        <div class="ctool" id="te" onclick="setTool('erase')">🧹</div>
+        <div style="width:1px;height:20px;background:var(--bd);margin:0 2px"></div>
+        <div class="cdot active" style="background:#9f67f5" onclick="setCol('#9f67f5')" data-c="#9f67f5"></div>
+        <div class="cdot" style="background:#14b8a6" onclick="setCol('#14b8a6')" data-c="#14b8a6"></div>
+        <div class="cdot" style="background:#fbbf24" onclick="setCol('#fbbf24')" data-c="#fbbf24"></div>
+        <div class="cdot" style="background:#f0eeff" onclick="setCol('#f0eeff')" data-c="#f0eeff"></div>
+        <div style="flex:1"></div>
+        <div class="ctool" onclick="clearC()">🗑️</div>
+      </div>
+      <canvas id="sketch-canvas" width="340" height="180"></canvas>
+    </div>
+    <div style="font-size:10px;color:var(--tx3);margin-top:.3rem">Pressure-sensitive · S Pen optimized</div>
+    <button class="btn bp" style="margin-top:1rem" onclick="saveJ()">Save entry</button>
+  </div>
+  <div class="slbl" style="margin-top:1rem">Past entries</div>
+  <div id="jentries"><div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No entries yet.</div></div>
+</div>
+
+<!-- HABITS -->
+<div class="sec" id="sec-habits">
+  <div class="slbl">Today's habits ✅</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.85rem">Tap to check off · Streaks update daily</div>
+  <div id="hlist"></div>
+  <div class="slbl" style="margin-top:1rem">7-day heatmap</div>
+  <div class="card"><div id="hmap"></div></div>
+</div>
+
+<!-- VIBE -->
+<div class="sec" id="sec-vibe">
+  <div class="slbl">Energy check-in ⚡</div>
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">Right now</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:36px;color:var(--v2);transition:color .3s" id="eval">5</div>
+      </div>
+      <div style="text-align:right">
+        <div id="elbl" style="font-size:13px;color:var(--tx2);font-weight:600"></div>
+        <div id="esub" style="font-size:11px;color:var(--tx3);margin-top:2px"></div>
+      </div>
+    </div>
+    <input type="range" class="eslider" id="eslider" min="1" max="10" value="5" oninput="updE(this.value)">
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--tx3)"><span>Depleted</span><span>Optimal</span><span>Too high</span></div>
+    <button class="btn bp" style="margin-top:.75rem" onclick="logE()">Log energy</button>
+  </div>
+  <div class="slbl" style="margin-top:.5rem">Cannabis log 🌿</div>
+  <div class="card">
+    <label class="ilbl">Strain / product</label>
+    <input type="text" class="inp" id="cstrain" placeholder="e.g. Granddaddy Purple, RSO tincture…" style="margin-bottom:.65rem">
+    <label class="ilbl">Method</label>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin-bottom:.65rem" id="mgrid"></div>
+    <label class="ilbl">Mood before (1–5)</label>
+    <div style="display:flex;gap:.5rem;margin-bottom:.65rem" id="cbbefore">
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.45rem" onclick="setCB(1)">😔</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.45rem" onclick="setCB(2)">😐</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.45rem" onclick="setCB(3)">🙂</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.45rem" onclick="setCB(4)">😊</button>
+      <button class="btn bg" style="flex:1;font-size:15px;padding:.45rem" onclick="setCB(5)">😄</button>
+    </div>
+    <label class="ilbl">Notes</label>
+    <textarea class="inp" id="cnotes" placeholder="Effects, timing, intention…" style="min-height:60px;margin-bottom:.65rem"></textarea>
+    <button class="btn bt" onclick="saveC()">Save entry</button>
+  </div>
+  <div class="slbl" style="margin-top:.5rem">Playlists 🎧</div>
+  <div class="card">
+    <div id="plrows"><div style="font-size:12px;color:var(--tx3)">No playlists yet.</div></div>
+    <div style="display:flex;gap:.5rem;margin-top:.65rem">
+      <input type="text" class="inp" id="plname" placeholder="Playlist name / vibe" style="flex:1">
+      <input type="text" class="inp" id="plurl" placeholder="Spotify URL" style="flex:1">
+    </div>
+    <button class="btn bg" style="margin-top:.5rem;font-size:13px" onclick="addPL()">+ Add playlist</button>
+  </div>
+  <div class="slbl" style="margin-top:.5rem">Recent logs</div>
+  <div id="vll"><div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No logs yet.</div></div>
+</div>
+
+<!-- BODY CLOCK -->
+<div class="sec" id="sec-clock">
+  <div class="slbl">Horary body clock 🕐</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Each organ meridian peaks for 2 hours · Your body runs on Qi time</div>
+  <div class="card" id="clocknow"></div>
+  <div style="display:flex;justify-content:center;padding:.5rem 0 .25rem">
+    <svg id="clocksvg" viewBox="-155 -155 310 310" width="270" height="270" style="overflow:visible"></svg>
+  </div>
+  <div class="slbl" style="margin-top:.5rem">All 12 organs</div>
+  <div id="orglist"></div>
+</div>
+
+<!-- BREATHWORK -->
+<div class="sec" id="sec-breath">
+  <div class="slbl">Breathwork 🫁</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Breath is the bridge between Shen and body · Choose your medicine</div>
+  <div class="tbar" id="btabs"></div>
+  <div class="card" id="binfo" style="margin-bottom:.75rem"></div>
+  <div class="card">
+    <div style="text-align:center;padding:1.5rem 0 1rem">
+      <div class="bc" id="bcircle" style="transition:transform 4s ease-in-out">
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:var(--tx);text-align:center;line-height:1.3" id="binner">Ready</div>
+      </div>
+      <div style="font-size:11px;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-top:.75rem" id="bphase">Choose a pattern above</div>
+      <div style="font-size:11px;color:var(--v3);margin-top:.25rem" id="bcount"></div>
+    </div>
+    <div style="display:flex;gap:.5rem;margin-top:.5rem">
+      <button class="btn bg" style="flex:1;font-size:12px" id="brnds" onclick="cycleRounds()">4 rounds</button>
+      <button class="btn bp" style="flex:2" id="bbtn" onclick="togBreath()">Start</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOON -->
+<div class="sec" id="sec-moon">
+  <div class="slbl">Moon phase 🌕</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">TCM and Korean medicine track the lunar cycle · Your Qi responds to the moon</div>
+  <div class="card" style="text-align:center">
+    <div style="padding:1rem">
+      <span id="mico" style="font-size:64px;line-height:1;margin-bottom:.5rem;display:block"></span>
+      <div id="mname" style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--tx)"></div>
+      <div id="mday" style="font-size:11px;color:var(--tx3);margin-top:.3rem"></div>
+    </div>
+    <div id="mtcm" style="font-size:15px;color:var(--tx2);line-height:1.65;text-align:left;padding:0 .5rem .75rem"></div>
+  </div>
+  <div class="slbl" style="margin-top:1rem">Clinical notes</div>
+  <div id="mclin"></div>
+  <div class="slbl" style="margin-top:1rem">Korean lunar medicine 한의학</div>
+  <div class="card"><div style="font-size:13px;color:var(--tx2);line-height:1.7">In classical Korean medicine (한의학), the lunar cycle governs the waxing and waning of Wei Qi (defensive energy) and Blood. Practitioners historically timed tonification on the waxing moon and sedation on the waning moon. The full moon amplifies Yang — sleep can be lighter, emotions more intense. The new moon draws energy inward — ideal for rest, reflection, and consolidating Jing.</div></div>
+</div>
+
+<!-- WEEKLY REVIEW -->
+<div class="sec" id="sec-review">
+  <div class="slbl">Weekly review 📊</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.85rem;line-height:1.6">Sunday ritual · 5 minutes · See the whole picture</div>
+  <div class="card" style="margin-bottom:.75rem">
+    <div style="font-size:11px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem">This week at a glance</div>
+    <div style="display:flex;gap:.5rem" id="rstats"></div>
+  </div>
+  <div class="slbl">Sleep this week</div>
+  <div class="card" id="rsleep"></div>
+  <div class="slbl" style="margin-top:.5rem">Habit performance</div>
+  <div class="card" id="rhabits"></div>
+  <div class="slbl" style="margin-top:.5rem">Dance sessions</div>
+  <div class="card" id="rdance"></div>
+  <div class="slbl" style="margin-top:.5rem">Reflection prompts</div>
+  <div class="card">
+    <div class="rq"><div class="rqlbl">What moved through me this week? (emotionally, physically, energetically)</div><textarea class="inp" id="rq1" placeholder="…" style="min-height:70px;margin-top:.4rem"></textarea></div>
+    <div class="rq"><div class="rqlbl">Which organ / element needed the most support?</div><textarea class="inp" id="rq2" placeholder="e.g. Liver Qi stagnation showed up as…" style="min-height:70px;margin-top:.4rem"></textarea></div>
+    <div class="rq"><div class="rqlbl">One thing I commit to next week</div><textarea class="inp" id="rq3" placeholder="Specific, small, doable…" style="min-height:60px;margin-top:.4rem"></textarea></div>
+    <div class="rq"><div class="rqlbl">Clinical observation — student lens 📚</div><textarea class="inp" id="rq4" placeholder="What pattern did I notice in myself that maps to a TCM diagnosis?" style="min-height:70px;margin-top:.4rem"></textarea></div>
+    <button class="btn bp" style="margin-top:.75rem" onclick="saveRev()">Save this week's review</button>
+  </div>
+  <div class="slbl" style="margin-top:1rem">Past reviews</div>
+  <div id="revhist"><div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No reviews yet.</div></div>
+</div>
+
+<!-- NAV -->
+
+<script>
+const DANCES=[
+  {id:'chacha',name:'Cha Cha',emoji:'🔥',organ:'Heart / Small Intestine',meridian:'HT · SI',element:'Fire',emotion:'Joy — and over-excitement',bpm:'120 bpm',color:'rgba(220,38,38,.15)',bc:'rgba(220,38,38,.3)',tc:'#f87171',rx:'When you feel scattered, anxious, or disconnected from joy. The Cha Cha coaxes Heart Qi to circulate — playful rhythm, quick feet, full presence.',tip:'Lead with your ribcage, not your feet. Feel the syncopation as a heartbeat.',aff:'My heart is open. Joy flows through me freely.'},
+  {id:'rumba',name:'Rumba',emoji:'🌊',organ:'Kidney / Bladder',meridian:'KD · BL',element:'Water',emotion:'Fear — and ancestral wisdom',bpm:'96 bpm',color:'rgba(37,99,235,.15)',bc:'rgba(37,99,235,.3)',tc:'#93c5fd',rx:'When you feel fearful, depleted, or ungrounded. Rumba draws energy to the root — it replenishes Jing and steadies the will.',tip:'Slow Cuban motion. Feel your weight drop into the floor on each step. This is a Yin dance.',aff:'I am rooted. My ancestral Qi rises to meet me.'},
+  {id:'swing',name:'Swing',emoji:'🌬️',organ:'Lung / Large Intestine',meridian:'LU · LI',element:'Metal',emotion:'Grief — and letting go',bpm:'168 bpm',color:'rgba(107,114,128,.15)',bc:'rgba(107,114,128,.3)',tc:'#d1d5db',rx:'When you feel heavy with sadness or stuck. Swing opens the chest, expands Lung Qi, and teaches the body to let go through explosive joy.',tip:'Deep breath before the rock step. The exhale IS the swing.',aff:'I release what no longer serves. I breathe in new life.'},
+  {id:'bolero',name:'Bolero',emoji:'🌙',organ:'Pericardium / Triple Warmer',meridian:'PC · TW',element:'Fire (Minister)',emotion:'Protectiveness — and vulnerability',bpm:'84 bpm',color:'rgba(124,58,237,.15)',bc:'rgba(124,58,237,.3)',tc:'#c4b5fd',rx:"When your heart feels defended, when you want connection but can't open. Bolero is slow medicine — it coaxes the Pericardium to soften its guard.",tip:'The slowest American Rhythm dance. Every movement is a conversation. Lead from the sternum.',aff:'I am safe enough to be seen. I allow connection.'},
+  {id:'mambo',name:'Mambo',emoji:'🌿',organ:'Liver / Gallbladder',meridian:'LV · GB',element:'Wood',emotion:'Anger — and creative vision',bpm:'188 bpm',color:'rgba(5,150,105,.15)',bc:'rgba(5,150,105,.3)',tc:'#6ee7b7',rx:"When you feel frustrated, stuck, or creatively blocked. Mambo moves Liver Qi stagnation better than almost anything. Let the anger become velocity.",tip:'Break on 2. The delay IS the liver releasing. Feel the hip drive from your lateral obliques.',aff:'My vision is clear. I move through obstacles with power and grace.'}
+];
+const NEEDS=[
+  {e:'😤',l:'Frustrated',d:'Mambo'},{e:'😨',l:'Anxious',d:'Rumba'},{e:'😶',l:'Numb',d:'Cha Cha'},
+  {e:'😢',l:'Grieving',d:'Swing'},{e:'🛡️',l:'Defended',d:'Bolero'},{e:'🔥',l:'Too Wired',d:'Rumba'},
+  {e:'😴',l:'Depleted',d:'Bolero'},{e:'🎉',l:'Celebrate',d:'Cha Cha'}
+];
+const WD=[
+  {i:'📱',t:'Blue light off',s:'Put the phone down or switch to night filter'},
+  {i:'🌿',t:'Evening cannabis (if using)',s:'Tincture or low-temp vape · indica-leaning'},
+  {i:'🫁',t:'4-7-8 breath · 4 rounds',s:'Inhale 4 · Hold 7 · Exhale 8'},
+  {i:'💊',t:'Evening supplements',s:'TUDCA PM · ALAmax CR · Augmented NAC'},
+  {i:'🌡️',t:'Room temp ≤ 68°F',s:'Core temp drop signals melatonin release'},
+  {i:'🧴',t:'Skincare ritual',s:'CK Mist → serum → Aqua Cream'},
+  {i:'📓',t:'Journal closed',s:'Intention set · Gratitudes logged'},
+  {i:'🎵',t:'Sleep playlist on',s:'60 bpm or lower · no lyrics'}
+];
+const HABITS=[
+  {id:'water',i:'💧',n:'Hydration',s:'8 glasses · electrolytes if sweating'},
+  {id:'move',i:'💃',n:'Movement or dance',s:'At least one song, full out'},
+  {id:'sun',i:'☀️',n:'Sunlight',s:'10+ min outside · AM preferred'},
+  {id:'journal',i:'📓',n:'Journaled',s:'Even 3 sentences counts'},
+  {id:'sleep-t',i:'🌙',n:'Sleep target',s:'In bed by target time'},
+  {id:'meds',i:'💊',n:'Morning stack taken',s:'All supplements · Aripiprazole 2mg AM'},
+  {id:'screen',i:'📵',n:'Screen curfew',s:'No phone 30 min before bed'},
+  {id:'grat',i:'🙏',n:'Gratitude practice',s:'3 things, spoken or written'}
+];
+const METHODS=['🌬️ Flower','💧 Tincture','🍬 Edible','🛢️ Vape','💊 Capsule','🧴 Topical'];
+const EL=['','Depleted 😞','Low 😔','Tired 😑','Meh 🙂','Good ✅','Optimal ⚡','Energized 🔋','Activated 🚀','Buzzing ⚡','Peak 🌟'];
+const ES=['','Rest now','Light movement ok','Normal day ok','Steady state','Sweet spot','In the zone','Productive','Watch for overreach','Slow down','Monitor closely'];
+const CLOCK=[
+  {o:'Lung',a:'LU',t:'3–5 AM',h:[3,4],el:'Metal',e:'🌬️',c:'#94a3b8',
+   why:'Lung Qi peaks in the deep hours before dawn — the body finishes overnight cellular repair and begins building Wei Qi for the day. The Lung governs the skin, breath, and the first inhalation of morning Yang.',
+   clin:'Waking at 3–5 AM is a classic sign of Lung Qi deficiency or unresolved grief. The Lung holds sadness — repeated early waking here points to a Metal imbalance.',
+   now:"If you're awake at this hour: breathe deeply and slowly. Place your hands on your chest. Let any grief surface without judgment. LU-7 acupressure can help.",
+   day:'Morning is best for breathwork, outdoor exercise, and skincare. Tonify with white/pungent foods: pear, radish, ginger tea.'},
+  {o:'Large Intestine',a:'LI',t:'5–7 AM',h:[5,6],el:'Metal',e:'💨',c:'#94a3b8',
+   why:"LI time is the body's peak elimination window — physically and emotionally. The large intestine processes waste from the previous day, both material and experiential. Morning bowel movements during this window signal healthy Qi flow.",
+   clin:'Constipation or difficulty eliminating in the morning suggests LI Qi stagnation, often related to suppressed grief or difficulty letting go emotionally.',
+   now:'Warm lemon water immediately on waking. Allow time for elimination before caffeine. LI-4 acupressure can stimulate movement if sluggish.',
+   day:'Gentle movement, setting intentions, releasing mental clutter before the day begins.'},
+  {o:'Stomach',a:'ST',t:'7–9 AM',h:[7,8],el:'Earth',e:'🌾',c:'#f59e0b',
+   why:'Stomach Qi peaks at 7–9 AM — the single most important window for eating. The Earth element governs digestion, transformation, and nourishment. A substantial breakfast during this window is one of the most clinically significant habits in TCM.',
+   clin:'Skipping breakfast weakens Stomach Qi over time, leading to fatigue, poor concentration, and Blood deficiency. Anxiety and overthinking often surface here too.',
+   now:'Eat a warm, substantial breakfast. Chew slowly. No screens — Stomach time calls for presence and grounding.',
+   day:'Morning appointments, important decisions, and learning all go well during Earth time.'},
+  {o:'Spleen',a:'SP',t:'9–11 AM',h:[9,10],el:'Earth',e:'🌀',c:'#f59e0b',
+   why:'Spleen Qi peaks mid-morning — the Spleen transforms food Qi into usable energy and lifts it to the Lungs and Heart. Mental clarity, focus, and analytical thinking are highest now.',
+   clin:'Spleen Qi deficiency shows as brain fog, bloating after meals, mid-morning fatigue, and overthinking. Dampness in the Spleen is common with poor diet or excessive worry.',
+   now:'Peak cognitive window. Study, write, and do your hardest thinking now. Avoid cold/raw foods and excessive sitting.',
+   day:'VUIM coursework, clinical notes, herbal formula memorization — all optimal here. Keep your feet warm; the Spleen meridian runs up the medial leg.'},
+  {o:'Heart',a:'HT',t:'11 AM–1 PM',h:[11,12],el:'Fire',e:'❤️',c:'#ef4444',
+   why:"Heart Qi peaks at midday — the apex of Yang for the entire day. The Heart governs Shen (spirit, consciousness, emotional intelligence). Noon is the peak of social energy, warmth, and connection.",
+   clin:'Heart imbalance shows as palpitations, insomnia, anxiety, and emotional dysregulation. Midday is when hypomania symptoms can peak if Fire is in excess.',
+   now:'Have lunch. Rest if possible — even 20 minutes of eyes-closed rest at noon is deeply restorative. Avoid intense exercise or emotionally charged conversations.',
+   day:'Connection, creativity, and collaboration peak here. A short nap (子午觉) at noon is traditional and clinically supported for Heart-Kidney communication.'},
+  {o:'Small Intestine',a:'SI',t:'1–3 PM',h:[13,14],el:'Fire',e:'🔥',c:'#ef4444',
+   why:'The Small Intestine separates the pure from the turbid — physically and mentally. After lunch, SI processes food while helping you sort information, make discernments, and prioritize.',
+   clin:'SI dysfunction shows as difficulty making decisions, sorting emotions, or processing experiences. The classic 2 PM energy dip is a SI/Heart transition.',
+   now:'Walk after lunch — it literally moves SI Qi. Lighter mental work is appropriate here.',
+   day:'Administrative tasks, emails, organizing notes — good SI time work. Physical movement prevents the classic Yang deficiency dip.'},
+  {o:'Bladder',a:'BL',t:'3–5 PM',h:[15,16],el:'Water',e:'💧',c:'#3b82f6',
+   why:"Bladder time governs storage and release of fluids and emotional tension. The Bladder meridian runs the entire length of the back — the longest meridian, holding tremendous postural and emotional tension.",
+   clin:"Back pain that worsens in the afternoon, afternoon anxiety, fear-based thinking, or a sudden drop in motivation often points to BL-KD imbalance.",
+   now:'Drink water. Stretch the back and spine. BL-40 (back of the knee) is an excellent afternoon acupressure point for releasing stored tension.',
+   day:'Physical activity, movement, or a dance session in the late afternoon works with BL time. Rumba — Water element — is especially potent now.'},
+  {o:'Kidney',a:'KD',t:'5–7 PM',h:[17,18],el:'Water',e:'🫘',c:'#3b82f6',
+   why:'Kidney Qi peaks at dusk — the Kidneys are the root of all Yin and Yang, storing Jing (essence). The body begins shifting from Yang activity to Yin restoration. The Kidneys govern willpower, fear, the bones, and reproductive health.',
+   clin:'Low back pain, knee weakness, fatigue at dusk, night urination, and fear-based patterns all point to KD deficiency. Monitor libido and drive at this hour as a Kidney Qi indicator.',
+   now:'Wind down physical activity. Eat your evening meal. KD-3 (medial ankle) is the source point — excellent for nightly acupressure.',
+   day:'Reflection, journaling, and gentle movement are ideal. Avoid overstimulation — protect Jing by limiting screens during deficiency states.'},
+  {o:'Pericardium',a:'PC',t:'7–9 PM',h:[19,20],el:'Fire (Minister)',e:'💜',c:'#8b5cf6',
+   why:"The Pericardium is the Heart's protector — it governs intimacy, emotional boundaries, and how we allow connection. Evening PC time is when the heart opens or closes. It governs the transition into social warmth and emotional safety for sleep.",
+   clin:'Difficulty relaxing in the evening, hypervigilance, emotional guardedness, or inability to wind down often reflects PC imbalance. This is when many people self-medicate with cannabis, alcohol, or screens.',
+   now:'Create emotional safety in your environment. Gentle connection, a warm bath, your skincare ritual. PC-6 (inner wrist, 2 cun up) is one of the most powerful calming points in the body.',
+   day:'Bolero — the Pericardium dance — is especially therapeutic in the evening. Slow intentional movement teaches the Pericardium to soften.'},
+  {o:'Triple Warmer',a:'TW',t:'9–11 PM',h:[21,22],el:'Fire (Minister)',e:'🔱',c:'#8b5cf6',
+   why:"The Triple Warmer (San Jiao) governs the three body cavities and regulates distribution of Yuan Qi throughout all organ systems. At 9–11 PM it performs a full-body Qi audit — redistributing energy reserves and preparing for overnight repair.",
+   clin:'Difficulty falling asleep between 9–11 PM, feeling wired but tired, racing thoughts at bedtime, or getting your second wind late at night all point to TW/PC imbalance.',
+   now:'This is the ideal sleep window. Be in bed by 10 PM. Wind-down protocol active. No screens. Cannabis tincture if using for sleep.',
+   day:'Honor TW time by not fighting it — the body is literally performing maintenance. Resisting sleep during this window depletes Yuan Qi over time.'},
+  {o:'Gallbladder',a:'GB',t:'11 PM–1 AM',h:[23,0],el:'Wood',e:'🌲',c:'#10b981',
+   why:'Gallbladder time begins the deep Yin phase. The GB governs decision-making, courage, and the ability to initiate — but at midnight it governs bile production and the beginning of overnight cellular detoxification.',
+   clin:'Waking at 11 PM–1 AM, sighing frequently, indecisiveness, or difficulty making courageous choices all reflect GB imbalance. Night owl tendencies that override this window deplete Wood Qi over time.',
+   now:'Be asleep. If you wake here, try GB-41 acupressure (dorsum of foot) and slow breathing. Avoid turning on any lights.',
+   day:'Daytime: honor GB by making decisions clearly and acting with courage. GB-21 (shoulder top) releases held tension from indecision.'},
+  {o:'Liver',a:'LV',t:'1–3 AM',h:[1,2],el:'Wood',e:'🍃',c:'#10b981',
+   why:'Liver time is the crown of the deep Yin phase — the most critical detoxification and blood-cleansing window in the 24-hour cycle. Your liver labs are a direct readout of what happens during LV time. The Liver stores Blood during sleep, processes toxins, and governs the smooth flow of Qi for the next day.',
+   clin:'Waking at 1–3 AM is the most clinically significant sleep disruption in TCM — it almost always indicates Liver Qi stagnation or Liver Blood deficiency. Given your liver history (AST 181 → 41 during sobriety), this window is sacred.',
+   now:'Be asleep and horizontal. The Liver can only store and cleanse Blood effectively when lying down. If you wake here often: LV-3 acupressure, reduce alcohol/cannabis, increase TUDCA.',
+   day:'Liver support: leafy greens, movement (Mambo!), anger processed through physical activity, creative expression. The Liver thrives when it can move freely.'}
+];
+const BREATH=[
+  {id:'478',n:'4-7-8',e:'🌙',ph:[{l:'Inhale',s:4,sc:1.4},{l:'Hold',s:7,sc:1.4},{l:'Exhale',s:8,sc:.85}],
+   why:'Activates the parasympathetic nervous system within 2 cycles. The extended exhale slows the heart rate and signals safety to the amygdala. Calms Heart Fire, descends Lung Qi.',
+   use:'Pre-sleep · Anxiety · After conflict · Before a hard conversation'},
+  {id:'box',n:'Box Breath',e:'⬜',ph:[{l:'Inhale',s:4,sc:1.35},{l:'Hold',s:4,sc:1.35},{l:'Exhale',s:4,sc:.85},{l:'Hold out',s:4,sc:.85}],
+   why:'Equal-ratio breathing balances the autonomic nervous system. Used by Navy SEALs and classical Qi Gong practitioners alike. Harmonizes all Five Elements by bringing breath into perfect symmetry.',
+   use:'Focus · Before study · Stress reset · Before dancing'},
+  {id:'coh',n:'Coherence',e:'💚',ph:[{l:'Inhale',s:5,sc:1.35},{l:'Exhale',s:5,sc:.85}],
+   why:'5-second inhale / 5-second exhale creates heart rate variability (HRV) coherence — the resonance frequency of the cardiovascular system. Strengthens the Heart-Lung axis in TCM.',
+   use:'Daily maintenance · Heart health · Mood regulation · Post-Aripiprazole adjustment period'},
+  {id:'22',n:'2-2 Energize',e:'⚡',ph:[{l:'Inhale',s:2,sc:1.3},{l:'Exhale',s:2,sc:.85}],
+   why:'Short rapid cycles gently elevate sympathetic tone and increase alertness without triggering the stress response. Raises Lung Yang and lifts Qi upward — classical "raising the clear."',
+   use:'Morning · Pre-practice · Low energy · Before dance session'},
+  {id:'wim',n:'Deep Release',e:'🌊',ph:[{l:'Deep inhale',s:3,sc:1.5},{l:'Let go',s:2,sc:.75}],
+   why:'Full chest expansion followed by passive release. Opens the Lung and Large Intestine axis — the Metal element grief-releasing channel. Each exhale is a micro let-go.',
+   use:'Grief · Stuck emotion · Post-argument · Lung Qi stagnation'}
+];
+const MOON=[
+  {n:'New Moon',e:'🌑',d:0,tcm:'New Moon draws Qi inward. Blood is at its lowest volume — the body naturally conserves. Ideal for rest, intention-setting, and consolidating Jing.',clin:'Tonification is most effective now. Moxa, warming herbs, rest. Avoid phlebotomy and strong purgatives.',ko:'새달 — the quiet before Yang rises. Plant seeds of intention. Protect your Kidney Qi.'},
+  {n:'Waxing Crescent',e:'🌒',d:3,tcm:'Yang begins to rise. Energy and Blood begin building. Good for gentle activation — movement, new habits, beginning protocols.',clin:'Begin tonification protocols. Good time to start new herbal formulas.',ko:'초승달 — the first light. Begin what you want to grow. Liver Qi begins to move.'},
+  {n:'First Quarter',e:'🌓',d:7,tcm:'Half Yang, half Yin. The body has momentum. Good for focused effort, boundary-setting, and sustained practice.',clin:'Mid-cycle balance. Good time for acupuncture treatments — Qi is accessible but not excessive.',ko:'반달 — balance and decision. The Gallbladder courage is available now.'},
+  {n:'Waxing Gibbous',e:'🌔',d:10,tcm:'Yang building toward fullness. Energy, drive, and physical strength increasing. Wei Qi (immunity) strengthens.',clin:'Strongest window for tonification, heavy exercise, and Yang-activating treatments.',ko:'Almost full — peak productivity, social energy, outward expression.'},
+  {n:'Full Moon',e:'🌕',d:14,tcm:'Peak Yang. Blood volume at its highest. Sleep can be lighter. Emotions amplified. Physical strength maximal.',clin:'Avoid strong sedation or purgation. Emotional intensity may increase. Monitor hypomania signs carefully.',ko:'보름달 — full power. The Heart and Shen are most activated. Intensity is medicine if channeled well.'},
+  {n:'Waning Gibbous',e:'🌖',d:17,tcm:'Yang begins retreating. Begin releasing what is no longer needed — physically, emotionally, relationally.',clin:'Good time for purgation, elimination techniques, and detox protocols. TUDCA and liver support work with this energy.',ko:'이지러지는 달 — begin releasing. Liver detox support is most effective now.'},
+  {n:'Last Quarter',e:'🌗',d:21,tcm:'Equal release. The body prepares for deep rest. Metabolism slows slightly. Digestive fire quiets.',clin:'Reduce heavy tonification. Focus on elimination, gentle movement, emotional processing.',ko:'하현달 — the wisdom half. What needs to be let go before the next cycle?'},
+  {n:'Waning Crescent',e:'🌘',d:25,tcm:'Deep Yin. The body approaches its most Yin state. Rest is not laziness — it is clinical necessity.',clin:'Strongest window for rest, consolidation, and deep Yin tonification. Avoid over-stimulation.',ko:'그믐달 — surrender and restore. Your Jing needs this stillness to regenerate.'}
+];
+
+// THEME
+(function(){
+  var saved=localStorage.getItem('groove-theme');
+  if(saved){document.documentElement.setAttribute('data-theme',saved);return;}
+  var sys=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  document.documentElement.setAttribute('data-theme',sys);
+})();
+window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){
+  if(!localStorage.getItem('groove-theme'))
+    document.documentElement.setAttribute('data-theme',e.matches?'dark':'light');
+});
+document.getElementById('theme-btn').addEventListener('click',function(){
+  var c=document.documentElement.getAttribute('data-theme'),n=c==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);localStorage.setItem('groove-theme',n);
+  this.textContent=n==='dark'?'☀️':'🌙';
+});
+
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(id==='clock')renderClock();
+  if(id==='review')renderRev();
+  if(id==='moon')renderMoon();
+}
+
+// ── DANCE ──
+var cDi=0,sDi=0;
+function initDance(){
+  document.getElementById('need-grid').innerHTML=NEEDS.map(n=>`<button class="mdbtn" onclick="recDance('${n.d}')" style="font-size:20px;padding:6px;min-width:52px">${n.e}<div style="font-size:9px;color:var(--tx3);margin-top:1px">${n.l}</div></button>`).join('');
+  document.getElementById('dance-tabs').innerHTML=DANCES.map((d,i)=>`<button class="tbtn${i===0?' active':''}" onclick="showD(${i},this)">${d.emoji} ${d.name}</button>`).join('');
+  document.getElementById('sdp').innerHTML=DANCES.map((d,i)=>`<button class="tbtn${i===0?' active':''}" id="sdp${i}" onclick="pickSD(${i},this)">${d.name}</button>`).join('');
+  renderDP(0);renderDSL();
+}
+function recDance(dn){
+  var i=DANCES.findIndex(d=>d.name===dn);var d=DANCES[i];
+  var r=document.getElementById('need-result');r.style.display='block';
+  r.innerHTML=`<b style="color:var(--v3)">${d.emoji} ${d.name}</b> is your medicine right now.<br><span style="color:var(--tx3)">${d.rx}</span>`;
+  showD(i,null);document.querySelectorAll('#dance-tabs .tbtn').forEach((b,j)=>b.classList.toggle('active',j===i));
+}
+function showD(i,btn){cDi=i;if(btn){document.querySelectorAll('#dance-tabs .tbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}renderDP(i);}
+function renderDP(i){
+  var d=DANCES[i];
+  document.getElementById('dance-panel').innerHTML=`
+    <div class="dh" style="background:${d.color};border-color:${d.bc}">
+      <div class="dhbg">${d.emoji}</div>
+      <div class="dname">${d.name}</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${d.tc};margin:.3rem 0">${d.organ} · ${d.meridian}</div>
+      <div style="font-size:13px;color:var(--tx2);line-height:1.5">${d.element} · <i>${d.emotion}</i></div>
+      <div style="display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap"><span class="chip cv">🎵 ${d.bpm}</span><span class="chip ct">5-Element</span></div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">When to use this dance 💊</div>
+      <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:.75rem">${d.rx}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem">Technique tip</div>
+      <div style="font-size:15px;color:var(--tx2);line-height:1.6;margin-bottom:.75rem">${d.tip}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem">Affirmation</div>
+      <div style="font-size:14px;color:var(--tx);font-style:italic;line-height:1.6">"${d.aff}"</div>
+    </div>`;
+}
+function pickSD(i,btn){sDi=i;document.querySelectorAll('#sdp .tbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+function saveDS(){
+  var m=document.getElementById('smins').value;if(!m){toast('Enter duration');return;}
+  var d=DANCES[sDi];var ss=JSON.parse(localStorage.getItem('groove-dsessions')||'[]');
+  ss.unshift({dance:d.name,emoji:d.emoji,mins:parseInt(m),notes:document.getElementById('snotes').value,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}),ts:Date.now()});
+  localStorage.setItem('groove-dsessions',JSON.stringify(ss.slice(0,50)));
+  document.getElementById('smins').value='';document.getElementById('snotes').value='';
+  renderDSL();toast(d.emoji+' '+d.name+' logged!');
+}
+function renderDSL(){
+  var ss=JSON.parse(localStorage.getItem('groove-dsessions')||'[]');
+  var el=document.getElementById('dsl');
+  if(!ss.length){el.innerHTML='<div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No sessions yet.</div>';return;}
+  el.innerHTML='<div class="card"><div>'+ss.slice(0,8).map(s=>`<div class="loge"><div class="logd">${s.date}</div><div><div style="font-size:14px;font-weight:700;color:var(--tx)">${s.emoji} ${s.dance} · ${s.mins}min</div>${s.notes?`<div style="font-size:11px;color:var(--tx3);margin-top:2px">${s.notes}</div>`:''}</div></div>`).join('')+'</div></div>';
+}
+
+// DANCE TIMER
+var dtt=180,dtl=180,dtr=false,dti=null;
+function setDT(s){if(dtr)return;dtt=s;dtl=s;rdtui();}
+function togDT(){
+  if(dtr){clearInterval(dti);dtr=false;document.getElementById('dtbtn').textContent='Resume';}
+  else{if(dtl<=0)dtl=dtt;dtr=true;document.getElementById('dtbtn').textContent='Pause';dti=setInterval(()=>{dtl--;rdtui();if(dtl<=0){clearInterval(dti);dtr=false;document.getElementById('dtbtn').textContent='Done ✓';toast('Practice complete! 💃');}},1000);}
+}
+function rdtui(){var p=dtl/dtt;document.getElementById('dtf').style.strokeDashoffset=339.3*(1-p);var m=Math.floor(dtl/60),s=dtl%60;document.getElementById('dtn').textContent=m+':'+(s<10?'0':'')+s;if(!dtr&&dtl===dtt)document.getElementById('dtbtn').textContent='Start';}
+
+// ── SLEEP ──
+function calcSleep(){
+  var v=document.getElementById('wake-time').value;if(!v)return;
+  var[wh,wm]=v.split(':').map(Number);var wm2=wh*60+wm;
+  var html='<div class="cgrid">';
+  [[6,'Best (6)','best'],[5,'Good (5)','good'],[4,'OK (4)',''],[3,'Short (3)','']] .forEach(([c,lbl,cls])=>{
+    var sm=wm2-(c*90)-14;while(sm<0)sm+=1440;var sh=Math.floor(sm/60)%24,ss=sm%60;var d12=sh%12||12,mer=sh>=12?'PM':'AM';
+    html+=`<div class="ccard${cls?' '+cls:''}" onclick="toast('Bed by ${d12}:${ss<10?'0':''}${ss} ${mer}')"><div class="ctime">${d12}:${ss<10?'0':''}${ss} <span style="font-size:11px">${mer}</span></div><div class="clbl">${lbl}</div><div style="font-size:10px;color:var(--tx3);margin-top:3px">${c*1.5}h</div></div>`;
+  });
+  html+='</div><div style="font-size:10px;color:var(--tx3);margin-top:.6rem;text-align:center">Includes ~14 min to fall asleep</div>';
+  document.getElementById('cycle-results').innerHTML=html;
+}
+function initWD(){
+  var sv=JSON.parse(localStorage.getItem('groove-wd')||'{}');
+  document.getElementById('wdl').innerHTML=WD.map((s,i)=>{var d=sv[i]||false;return `<div class="wds${d?' done':''}" onclick="togWD(${i},this)"><div class="wdico">${s.i}</div><div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--tx)">${s.t}</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">${s.s}</div></div><div class="wdchk">${d?'✓':''}</div></div>`;}).join('');
+}
+function togWD(i,el){var sv=JSON.parse(localStorage.getItem('groove-wd')||'{}');sv[i]=!sv[i];localStorage.setItem('groove-wd',JSON.stringify(sv));el.classList.toggle('done');el.querySelector('.wdchk').textContent=sv[i]?'✓':'';}
+function resetWD(){localStorage.removeItem('groove-wd');initWD();toast('Wind-down reset 🌙');}
+var selQ=0;
+function setQ(q){selQ=q;document.querySelectorAll('#qbtns .btn').forEach((b,i)=>{var s=(i+1)===q;b.style.background=s?'var(--v)':'';b.style.color=s?'#fff':'';b.style.borderColor=s?'var(--v)':'';}); }
+function saveSleep(){
+  var h=document.getElementById('sleep-hours').value;if(!h){toast('Enter hours');return;}
+  var l=JSON.parse(localStorage.getItem('groove-sleep')||'[]');
+  l.unshift({date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}),hours:parseFloat(h),quality:selQ||0,dreams:document.getElementById('dream-notes').value,ts:Date.now()});
+  localStorage.setItem('groove-sleep',JSON.stringify(l.slice(0,30)));
+  document.getElementById('sleep-hours').value='';document.getElementById('dream-notes').value='';
+  selQ=0;document.querySelectorAll('#qbtns .btn').forEach(b=>{b.style.background='';b.style.color='';b.style.borderColor='';});
+  renderSleep();toast('Sleep logged 🌙');
+}
+function renderSleep(){
+  var l=JSON.parse(localStorage.getItem('groove-sleep')||'[]');
+  var el=document.getElementById('sle');
+  if(!l.length){el.innerHTML='<div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No entries yet.</div>';return;}
+  el.innerHTML='<div class="card"><div>'+l.map(e=>`<div class="loge"><div class="logd">${e.date}</div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">${e.hours}h${e.quality?' · '+'⭐'.repeat(e.quality):''}</div>${e.dreams?`<div style="font-size:11px;color:var(--tx3)">${e.dreams}</div>`:''}</div></div>`).join('')+'</div></div>';
+}
+
+// ── JOURNAL ──
+var jMood='';
+var JM=['😊','🙂','😐','😔','😤','😨','🔥','🌊','💜','✨'];
+function initJ(){
+  document.getElementById('jdate').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('jmoods').innerHTML=JM.map(m=>`<button class="mdbtn" onclick="setJM('${m}',this)">${m}</button>`).join('');
+  renderJE();initCanvas();
+}
+function setJM(m,btn){jMood=m;document.querySelectorAll('#jmoods .mdbtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
+function saveJ(){
+  var entries=JSON.parse(localStorage.getItem('groove-journal')||'[]');
+  var cd=document.getElementById('sketch-canvas').toDataURL();
+  var bl=document.createElement('canvas');bl.width=340;bl.height=180;
+  entries.unshift({date:new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}),mood:jMood,int:document.getElementById('jint').value,grats:[document.getElementById('jg1').value,document.getElementById('jg2').value,document.getElementById('jg3').value].filter(Boolean),fw:document.getElementById('jfw').value,sketch:cd!==bl.toDataURL()?cd:null,ts:Date.now()});
+  localStorage.setItem('groove-journal',JSON.stringify(entries.slice(0,60)));
+  ['jint','jg1','jg2','jg3','jfw'].forEach(id=>document.getElementById(id).value='');
+  jMood='';document.querySelectorAll('#jmoods .mdbtn').forEach(b=>b.classList.remove('sel'));clearC();renderJE();toast('Entry saved 📓');
+}
+function renderJE(){
+  var e=JSON.parse(localStorage.getItem('groove-journal')||'[]');
+  var el=document.getElementById('jentries');
+  if(!e.length){el.innerHTML='<div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No entries yet.</div>';return;}
+  el.innerHTML=e.map((en,i)=>`<div class="je"><div class="jehdr" onclick="togJE(${i})"><div><div style="font-size:12px;font-weight:700;color:var(--tx2)">${en.mood||''} ${en.date}</div><div style="font-size:11px;color:var(--tx3);margin-top:1px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:180px">${en.int||en.fw||'—'}</div></div><span style="color:var(--tx3);font-size:13px;margin-left:.5rem">›</span></div><div class="jebody" id="jeb${i}">${en.int?`<div class="jesec">Intention</div><div class="jetxt">${en.int}</div>`:''} ${en.grats&&en.grats.length?`<div class="jesec">Gratitudes</div><div class="jetxt">${en.grats.map(g=>'• '+g).join('<br>')}</div>`:''} ${en.fw?`<div class="jesec">Free Write</div><div class="jetxt">${en.fw.replace(/\n/g,'<br>')}</div>`:''} ${en.sketch?`<div class="jesec">Sketch</div><img src="${en.sketch}" style="width:100%;border-radius:8px;margin-top:.3rem">`:''}  </div></div>`).join('');
+}
+function togJE(i){document.getElementById('jeb'+i).classList.toggle('open');}
+
+// CANVAS
+var canv,ctx,drawing=false,ctool='pen',pcolor='#9f67f5',lx=0,ly=0;
+function initCanvas(){
+  canv=document.getElementById('sketch-canvas');var w=canv.parentElement.offsetWidth||340;canv.width=w;canv.height=180;
+  ctx=canv.getContext('2d');ctx.lineJoin='round';ctx.lineCap='round';
+  canv.addEventListener('pointerdown',pd);canv.addEventListener('pointermove',pm);
+  ['pointerup','pointerleave','pointercancel'].forEach(e=>canv.addEventListener(e,()=>{drawing=false;}));
+}
+function gp(e){var r=canv.getBoundingClientRect();return{x:(e.clientX-r.left)*(canv.width/r.width),y:(e.clientY-r.top)*(canv.height/r.height),p:e.pressure||0.5};}
+function pd(e){e.preventDefault();drawing=true;canv.setPointerCapture(e.pointerId);var p=gp(e);lx=p.x;ly=p.y;ctx.beginPath();ctx.arc(lx,ly,(ctool==='erase'?12:1.5)*p.p,0,Math.PI*2);ctx.fillStyle=ctool==='erase'?getComputedStyle(document.documentElement).getPropertyValue('--bg3'):pcolor;ctx.fill();}
+function pm(e){if(!drawing)return;e.preventDefault();var p=gp(e);ctx.beginPath();ctx.moveTo(lx,ly);ctx.lineTo(p.x,p.y);if(ctool==='erase'){ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--bg3').trim()||'#16162a';ctx.lineWidth=20;}else{ctx.strokeStyle=pcolor;ctx.lineWidth=Math.max(.8,p.p*4);}ctx.stroke();lx=p.x;ly=p.y;}
+function setTool(t){ctool=t;document.getElementById('tp').classList.toggle('active',t==='pen');document.getElementById('te').classList.toggle('active',t==='erase');}
+function setCol(c){pcolor=c;ctool='pen';document.getElementById('tp').classList.add('active');document.getElementById('te').classList.remove('active');document.querySelectorAll('.cdot').forEach(d=>d.classList.toggle('active',d.dataset.c===c));}
+function clearC(){if(ctx)ctx.clearRect(0,0,canv.width,canv.height);}
+
+// ── HABITS ──
+function hkey(){return 'groove-h-'+new Date().toISOString().slice(0,10);}
+function initH(){renderH();renderHmap();}
+function renderH(){
+  var sv=JSON.parse(localStorage.getItem(hkey())||'{}');
+  document.getElementById('hlist').innerHTML=HABITS.map(h=>{
+    var d=sv[h.id]||false;var st=parseInt(localStorage.getItem('groove-st-'+h.id)||'0');
+    return `<div class="hrow${d?' done':''}" onclick="togH('${h.id}',this)"><div style="display:flex;align-items:center;gap:.65rem"><div style="font-size:20px">${h.i}</div><div><div style="font-size:15px;font-weight:600;color:var(--tx)">${h.n}</div><div style="font-size:11px;color:var(--tx3);margin-top:1px">${h.s}</div>${st>1?`<div style="font-size:10px;color:var(--g2);margin-top:2px">🔥 ${st} day streak</div>`:''}</div></div><div class="hchk">${d?'✓':''}</div></div>`;
+  }).join('');
+}
+function togH(id,el){
+  var k=hkey();var sv=JSON.parse(localStorage.getItem(k)||'{}');sv[id]=!sv[id];localStorage.setItem(k,JSON.stringify(sv));
+  if(sv[id]){var s=parseInt(localStorage.getItem('groove-st-'+id)||'0');localStorage.setItem('groove-st-'+id,s+1);toast('✓ '+HABITS.find(h=>h.id===id).n);}
+  renderH();renderHmap();
+}
+function renderHmap(){
+  var td=new Date();
+  document.getElementById('hmap').innerHTML='<div style="display:flex;flex-direction:column;gap:.5rem">'+HABITS.map(h=>{
+    var dots='';for(var i=6;i>=0;i--){var d=new Date(td);d.setDate(d.getDate()-i);var k='groove-h-'+d.toISOString().slice(0,10);var s=JSON.parse(localStorage.getItem(k)||'{}');var done=s[h.id]||false;dots+=`<div class="sdot${done?(i===0?' today':' hit'):''}" title="${d.toLocaleDateString('en-US',{weekday:'short'})}"></div>`;}
+    return `<div style="display:flex;align-items:center;gap:.5rem"><div style="font-size:14px;width:20px">${h.i}</div><div style="font-size:11px;color:var(--tx3);flex:1;min-width:52px;font-weight:500">${h.n.split(' ')[0]}</div><div style="display:flex;gap:4px">${dots}</div></div>`;
+  }).join('')+'</div>';
+}
+
+// ── VIBE ──
+function updE(v){v=parseInt(v);document.getElementById('eval').textContent=v;document.getElementById('elbl').textContent=EL[v]||'';document.getElementById('esub').textContent=ES[v]||'';var el=document.getElementById('eval');if(v<=3)el.style.color='var(--tx2)';else if(v<=6)el.style.color='var(--t2)';else if(v<=8)el.style.color='var(--v2)';else el.style.color='var(--g2)';}
+function logE(){var v=document.getElementById('eslider').value;saveVL({type:'energy',value:v,label:EL[v],ts:Date.now()});toast('Energy logged ⚡');}
+var selM='',cBef=0;
+function initM(){document.getElementById('mgrid').innerHTML=METHODS.map(m=>`<button class="mbtn" onclick="setM('${m}',this)">${m}</button>`).join('');}
+function setM(m,btn){selM=m;document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');}
+function setCB(v){cBef=v;document.querySelectorAll('#cbbefore .btn').forEach((b,i)=>{var s=(i+1)===v;b.style.background=s?'var(--t)':'';b.style.color=s?'#fff':'';b.style.borderColor=s?'var(--t)':'';}); }
+function saveC(){
+  var strain=document.getElementById('cstrain').value;if(!strain){toast('Enter strain/product');return;}
+  saveVL({type:'cannabis',strain,method:selM,before:cBef,notes:document.getElementById('cnotes').value,ts:Date.now()});
+  document.getElementById('cstrain').value='';document.getElementById('cnotes').value='';selM='';cBef=0;
+  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('sel'));document.querySelectorAll('#cbbefore .btn').forEach(b=>{b.style.background='';b.style.color='';b.style.borderColor='';});
+  toast('Cannabis logged 🌿');
+}
+function initPL(){renderPL();}
+function addPL(){
+  var name=document.getElementById('plname').value.trim();if(!name){toast('Enter a name');return;}
+  var l=JSON.parse(localStorage.getItem('groove-playlists')||'[]');
+  l.push({name,url:document.getElementById('plurl').value.trim(),ts:Date.now()});
+  localStorage.setItem('groove-playlists',JSON.stringify(l));
+  document.getElementById('plname').value='';document.getElementById('plurl').value='';
+  renderPL();toast('Playlist added 🎧');
+}
+function renderPL(){
+  var l=JSON.parse(localStorage.getItem('groove-playlists')||'[]');
+  var el=document.getElementById('plrows');
+  if(!l.length){el.innerHTML='<div style="font-size:12px;color:var(--tx3)">No playlists yet.</div>';return;}
+  el.innerHTML=l.map((p,i)=>`<div class="plrow" onclick="${p.url?`window.open('${p.url}','_blank')`:'toast(\"No URL added\")'}" ><div style="display:flex;align-items:center;gap:.65rem"><div class="plico">🎧</div><div><div style="font-size:13px;font-weight:600;color:var(--tx)">${p.name}</div><div style="font-size:11px;color:var(--tx3)">${p.url?'Tap to open':'No link'}</div></div></div><button onclick="event.stopPropagation();rmPL(${i})" style="background:none;border:none;color:var(--tx3);font-size:18px;cursor:pointer;padding:.25rem">×</button></div>`).join('');
+}
+function rmPL(i){var l=JSON.parse(localStorage.getItem('groove-playlists')||'[]');l.splice(i,1);localStorage.setItem('groove-playlists',JSON.stringify(l));renderPL();}
+function saveVL(e){var l=JSON.parse(localStorage.getItem('groove-vl')||'[]');l.unshift(e);localStorage.setItem('groove-vl',JSON.stringify(l.slice(0,50)));renderVL();}
+function renderVL(){
+  var l=JSON.parse(localStorage.getItem('groove-vl')||'[]');var el=document.getElementById('vll');
+  if(!l.length){el.innerHTML='<div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No logs yet.</div>';return;}
+  el.innerHTML='<div class="card"><div>'+l.slice(0,10).map(e=>{var ti=new Date(e.ts).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});var da=new Date(e.ts).toLocaleDateString('en-US',{month:'short',day:'numeric'});var tx='';if(e.type==='energy')tx=`⚡ Energy ${e.value}/10 — ${e.label}`;else if(e.type==='cannabis')tx=`🌿 ${e.strain}${e.method?' · '+e.method:''}`;return `<div class="loge"><div class="logd">${da}<br><span style="font-size:9px">${ti}</span></div><div style="font-size:13px;color:var(--tx2);padding-top:.15rem">${tx}${e.notes?`<div style="font-size:11px;color:var(--tx3);margin-top:2px">${e.notes}</div>`:''}</div></div>`;}).join('')+'</div></div>';
+}
+
+// ── BODY CLOCK ──
+function renderClock(){
+  var now=new Date();var h=now.getHours();
+  var cur=CLOCK.find(o=>o.h.includes(h))||CLOCK.find(o=>o.h.includes(0));
+  document.getElementById('clocknow').innerHTML=`
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+      <div style="font-size:36px;width:52px;height:52px;border-radius:14px;background:rgba(124,58,237,.15);display:flex;align-items:center;justify-content:center">${cur.e}</div>
+      <div><div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em">Right now · ${now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}</div>
+      <div class="oname">${cur.o} Time</div><div style="font-size:11px;color:var(--tx3)">${cur.t} · ${cur.el} Element</div></div>
+    </div>
+    <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Why this matters</div>
+    <div style="font-size:15px;color:var(--tx2);line-height:1.7;margin-bottom:.65rem">${cur.why}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Clinical note 📚</div>
+    <div style="font-size:15px;color:var(--tx2);line-height:1.7;margin-bottom:.65rem">${cur.clin}</div>
+    <div class="odo"><div class="odolbl">What to do right now</div><div style="font-size:14px;color:var(--tx2);line-height:1.6">${cur.now}</div></div>`;
+
+  // SVG ring
+  var svg=document.getElementById('clocksvg');var R=118;var ir=72;
+  var sl='',lb='';
+  CLOCK.forEach((o,i)=>{
+    var sa=((o.h[0]*15)-90)*(Math.PI/180);var ea=((o.h[0]*15+30)-90)*(Math.PI/180);
+    var x1=R*Math.cos(sa),y1=R*Math.sin(sa),x2=R*Math.cos(ea),y2=R*Math.sin(ea);
+    var act=o===cur;var ir2=act?ir+6:ir;
+    var ix1=ir2*Math.cos(sa),iy1=ir2*Math.sin(sa),ix2=ir2*Math.cos(ea),iy2=ir2*Math.sin(ea);
+    sl+=`<path d="M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2} L ${ix2} ${iy2} A ${ir2} ${ir2} 0 0 0 ${ix1} ${iy1} Z" fill="${act?o.c:'rgba(255,255,255,.04)'}" stroke="${act?o.c:'rgba(255,255,255,.07)'}" stroke-width="${act?2:.5}" opacity="${act?1:.8}"/>`;
+    var ma=((o.h[0]*15+15)-90)*(Math.PI/180);var lx=(R+14)*Math.cos(ma),ly2=(R+14)*Math.sin(ma);
+    lb+=`<text x="${lx}" y="${ly2}" text-anchor="middle" dominant-baseline="middle" font-size="${act?11:9}" fill="${act?'#c4a8fc':'rgba(255,255,255,.35)'}" font-family="DM Sans,sans-serif" font-weight="${act?700:400}">${o.a}</text>`;
+  });
+  var ha=((h*15+7.5)-90)*(Math.PI/180);var hx=55*Math.cos(ha),hy=55*Math.sin(ha);
+  svg.innerHTML=sl+lb+`<circle cx="0" cy="0" r="${ir-2}" fill="var(--bg2)" stroke="var(--bd)" stroke-width="1"/><line x1="0" y1="0" x2="${hx}" y2="${hy}" stroke="var(--v2)" stroke-width="2.5" stroke-linecap="round"/><circle cx="0" cy="0" r="4" fill="var(--v2)"/>`;
+
+  document.getElementById('orglist').innerHTML=CLOCK.map((o,i)=>{
+    var act=o===cur;
+    return `<div class="ocard${act?' aorg':''}"><div style="display:flex;align-items:center;gap:.6rem;cursor:pointer" onclick="togOrg(${i})">
+      <div style="font-size:22px;width:38px;height:38px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center">${o.e}</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--tx)">${o.o}${act?' ← now':''}</div><div style="font-size:11px;color:var(--tx3)">${o.t} · ${o.el}</div></div>
+      <span style="color:var(--tx3);font-size:13px" id="oa${i}">›</span>
+    </div>
+    <div id="ob${i}" style="display:${act?'block':'none'};margin-top:.65rem">
+      <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Why it matters</div>
+      <div style="font-size:14px;color:var(--tx2);line-height:1.65;margin-bottom:.5rem">${o.why}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Clinical</div>
+      <div style="font-size:14px;color:var(--tx2);line-height:1.65;margin-bottom:.5rem">${o.clin}</div>
+      <div class="odo"><div class="odolbl">What to do</div><div style="font-size:14px;color:var(--tx2);line-height:1.6">${o.now}<br><br>${o.day}</div></div>
+    </div></div>`;
+  }).join('');
+}
+function togOrg(i){var b=document.getElementById('ob'+i);var a=document.getElementById('oa'+i);var op=b.style.display!=='none';b.style.display=op?'none':'block';a.style.transform=op?'':'rotate(90deg)';}
+
+// ── BREATHWORK ──
+var bpi=0,bRounds=4,bRound=0,bPhi=0,bInt=null,bRun=false;
+function initBreath(){
+  document.getElementById('btabs').innerHTML=BREATH.map((p,i)=>`<button class="tbtn${i===0?' active':''}" onclick="selBP(${i},this)">${p.e} ${p.n}</button>`).join('');
+  renderBI(0);
+}
+function selBP(i,btn){bpi=i;stopB();document.querySelectorAll('#btabs .tbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderBI(i);document.getElementById('binner').textContent='Ready';document.getElementById('bphase').textContent='Press Start';document.getElementById('bcount').textContent='';document.getElementById('bcircle').style.transform='scale(1)';}
+function renderBI(i){
+  var p=BREATH[i];
+  document.getElementById('binfo').innerHTML=`<div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Why this pattern</div><div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:.6rem">${p.why}</div><div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Best for</div><div style="font-size:13px;color:var(--tx2)">${p.use}</div>`;
+}
+function cycleRounds(){var o=[4,6,8,10,12];var c=o.indexOf(bRounds);bRounds=o[(c+1)%o.length];document.getElementById('brnds').textContent=bRounds+' rounds';}
+function togBreath(){if(bRun)stopB();else startB();}
+function startB(){
+  var p=BREATH[bpi];bRun=true;bRound=0;bPhi=0;document.getElementById('bbtn').textContent='Stop';
+  runBP(p);
+}
+function runBP(p){
+  if(!bRun)return;
+  if(bRound>=bRounds){stopB();document.getElementById('binner').textContent='Done ✓';document.getElementById('bphase').textContent='Session complete';toast('Breathwork complete 🫁');return;}
+  var ph=p.ph[bPhi];
+  document.getElementById('binner').textContent=ph.l;document.getElementById('bphase').textContent=ph.s+' seconds';
+  document.getElementById('bcount').textContent='Round '+(bRound+1)+' of '+bRounds;
+  document.getElementById('bcircle').style.transition='transform '+ph.s+'s ease-in-out';
+  document.getElementById('bcircle').style.transform='scale('+ph.sc+')';
+  var tick=ph.s;
+  bInt=setInterval(()=>{tick--;document.getElementById('bphase').textContent=tick+' seconds';if(tick<=0){clearInterval(bInt);bPhi++;if(bPhi>=p.ph.length){bPhi=0;bRound++;}if(bRun)runBP(p);}},1000);
+}
+function stopB(){bRun=false;clearInterval(bInt);document.getElementById('bbtn').textContent='Start';document.getElementById('bcircle').style.transform='scale(1)';}
+
+// ── MOON ──
+function renderMoon(){
+  var knm=new Date('2000-01-06T18:14:00Z');var lc=29.53058867;var now=new Date();
+  var phase=(((now-knm)/(1000*60*60*24))%lc+lc)%lc;var day=Math.floor(phase);
+  var mp=MOON.reduce((b,p)=>Math.abs(phase-p.d)<Math.abs(phase-b.d)?p:b,MOON[0]);
+  document.getElementById('mico').textContent=mp.e;
+  document.getElementById('mname').textContent=mp.n;
+  document.getElementById('mday').textContent='Day '+day+' of lunar cycle · '+Math.round(phase*10)/10+' days since new moon';
+  document.getElementById('mtcm').innerHTML=`<b style="color:var(--v3)">TCM:</b> ${mp.tcm}`;
+  document.getElementById('mclin').innerHTML=`<div class="card"><div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Clinical note for ${mp.n}</div><div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:.6rem">${mp.clin}</div><div style="font-size:10px;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">Korean lunar medicine</div><div style="font-size:13px;color:var(--tx2);line-height:1.7">${mp.ko}</div></div>`;
+}
+
+// ── WEEKLY REVIEW ──
+function wkey(){var d=new Date();var di=d.getDay();var diff=d.getDate()-di+(di===0?-6:1);return new Date(new Date(d).setDate(diff)).toISOString().slice(0,10);}
+function renderRev(){
+  var sl=JSON.parse(localStorage.getItem('groove-sleep')||'[]');
+  var wk=sl.filter(l=>(Date.now()-l.ts)<7*24*60*60*1000);
+  var avs=wk.length?Math.round(wk.reduce((a,l)=>a+l.hours,0)/wk.length*10)/10:0;
+  var ds=JSON.parse(localStorage.getItem('groove-dsessions')||'[]');
+  var wds=ds.filter(s=>(Date.now()-s.ts)<7*24*60*60*1000);
+  var tdm=wds.reduce((a,s)=>a+s.mins,0);
+  var je=JSON.parse(localStorage.getItem('groove-journal')||'[]');
+  var wje=je.filter(e=>(Date.now()-e.ts)<7*24*60*60*1000);
+  var td=new Date();var hd=0,ht=0;
+  for(var i=0;i<7;i++){var d=new Date(td);d.setDate(d.getDate()-i);var k='groove-h-'+d.toISOString().slice(0,10);var sv=JSON.parse(localStorage.getItem(k)||'{}');Object.values(sv).forEach(v=>{ht++;if(v)hd++;});}
+  document.getElementById('rstats').innerHTML=[
+    {n:avs||'—',l:'Avg Sleep h'},{n:wk.length,l:'Nights logged'},
+    {n:wds.length,l:'Dance sessions'},{n:wje.length,l:'Journal entries'}
+  ].map(s=>`<div class="rstat"><div class="rstat-n">${s.n}</div><div class="rstat-l">${s.l}</div></div>`).join('');
+
+  document.getElementById('rsleep').innerHTML=wk.length?
+    wk.slice(0,7).map(l=>`<div class="loge"><div class="logd">${l.date}</div><div><div style="font-size:16px;font-weight:700;color:var(--tx)">${l.hours}h${l.quality?' · '+'⭐'.repeat(l.quality):''}</div></div></div>`).join('')+
+    `<div style="margin-top:.65rem;font-size:12px;color:var(--tx3)">Avg: ${avs}h this week</div>`:
+    '<div style="text-align:center;color:var(--tx3);font-size:13px">No sleep data this week.</div>';
+
+  document.getElementById('rhabits').innerHTML=`<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem">
+    <div style="font-family:'DM Serif Display',serif;font-size:32px;color:var(--v2)">${ht?Math.round(hd/ht*100):0}%</div>
+    <div><div style="font-size:13px;font-weight:600;color:var(--tx)">${hd} of ${ht} habits completed</div></div></div>`+
+    '<div style="display:flex;flex-direction:column;gap:.35rem">'+HABITS.map(h=>{
+      var cnt=0;for(var i=0;i<7;i++){var d=new Date(td);d.setDate(d.getDate()-i);var k='groove-h-'+d.toISOString().slice(0,10);var sv=JSON.parse(localStorage.getItem(k)||'{}');if(sv[h.id])cnt++;}
+      return `<div style="display:flex;align-items:center;gap:.5rem"><div style="font-size:13px;width:18px">${h.i}</div><div style="font-size:11px;color:var(--tx3);flex:1">${h.n}</div><div style="font-size:11px;font-weight:700;color:${cnt>=5?'var(--t2)':cnt>=3?'var(--g2)':'var(--tx3)'}">${cnt}/7</div></div>`;
+    }).join('')+'</div>';
+
+  document.getElementById('rdance').innerHTML=wds.length?
+    `<div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.5rem">${tdm} min across ${wds.length} session${wds.length!==1?'s':''}</div>`+
+    wds.map(s=>`<div class="loge"><div class="logd">${s.date}</div><div><div style="font-size:13px;font-weight:700;color:var(--tx)">${s.emoji} ${s.dance} · ${s.mins}min</div></div></div>`).join(''):
+    '<div style="text-align:center;color:var(--tx3);font-size:13px">No dance sessions this week.</div>';
+
+  var saved=JSON.parse(localStorage.getItem('groove-rev-'+wkey())||'{}');
+  if(saved.q1)document.getElementById('rq1').value=saved.q1;
+  if(saved.q2)document.getElementById('rq2').value=saved.q2;
+  if(saved.q3)document.getElementById('rq3').value=saved.q3;
+  if(saved.q4)document.getElementById('rq4').value=saved.q4;
+  renderRevH();
+}
+function saveRev(){
+  var wk=wkey();
+  var rev={week:wk,q1:document.getElementById('rq1').value,q2:document.getElementById('rq2').value,q3:document.getElementById('rq3').value,q4:document.getElementById('rq4').value,ts:Date.now()};
+  localStorage.setItem('groove-rev-'+wk,JSON.stringify(rev));
+  var all=JSON.parse(localStorage.getItem('groove-rev-hist')||'[]');
+  var idx=all.findIndex(r=>r.week===wk);if(idx>=0)all[idx]=rev;else all.unshift(rev);
+  localStorage.setItem('groove-rev-hist',JSON.stringify(all.slice(0,52)));
+  renderRevH();toast('Review saved 📊');
+}
+function renderRevH(){
+  var all=JSON.parse(localStorage.getItem('groove-rev-hist')||'[]');
+  var el=document.getElementById('revhist');
+  if(!all.length){el.innerHTML='<div class="card" style="text-align:center;color:var(--tx3);font-size:13px">No reviews yet.</div>';return;}
+  el.innerHTML=all.map((r,i)=>`<div class="je"><div class="jehdr" onclick="togRev(${i})"><div><div style="font-size:12px;font-weight:700;color:var(--tx2)">Week of ${r.week}</div><div style="font-size:11px;color:var(--tx3);margin-top:1px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:200px">${r.q1||r.q3||'—'}</div></div><span style="color:var(--tx3);font-size:13px">›</span></div><div class="jebody" id="rb${i}">${r.q1?`<div class="jesec">What moved through me</div><div class="jetxt">${r.q1}</div>`:''} ${r.q2?`<div class="jesec">Organ / element</div><div class="jetxt">${r.q2}</div>`:''} ${r.q3?`<div class="jesec">Commitment</div><div class="jetxt">${r.q3}</div>`:''} ${r.q4?`<div class="jesec">Clinical observation</div><div class="jetxt">${r.q4}</div>`:''}</div></div>`).join('');
+}
+function togRev(i){document.getElementById('rb'+i).classList.toggle('open');}
+
+// ── INIT ──
+(function(){
+  var t=document.documentElement.getAttribute('data-theme');
+  document.getElementById('theme-btn').textContent=t==='dark'?'☀️':'🌙';
+  initDance();calcSleep();initWD();renderSleep();
+  initJ();initH();initM();initPL();
+  renderVL();updE(5);rdtui();initBreath();
+
+  var p=new URLSearchParams(window.location.search).get('tab');
+  if(p){var b=document.querySelector('[data-s="'+p+'"]');if(b)sw(p,b);}
+})();
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/groove-is-in-the-qi/sw.js').catch(e=>console.log('SW:',e));
+  });
+}
+
+// ── ACUPRESSURE DATA ──
+const ZONES = [
+  {id:'all', label:'All'},
+  {id:'wrist', label:'Wrist & Hand'},
+  {id:'leg', label:'Leg & Foot'},
+  {id:'head', label:'Head & Neck'},
+  {id:'torso', label:'Torso & Back'}
+];
+const POINTS = [
+  {name:'LV-3 (太衝)',loc:'Dorsum of foot, between 1st & 2nd metatarsal',zone:'leg',organ:'Liver',clock:'1–3 AM',emoji:'🍃',
+   why:'The most powerful Liver point — moves Qi and Blood stagnation. Great for anger, frustration, PMS, headache, eye issues.',
+   how:'Apply firm pressure for 30–60 sec. Can feel intense — that\'s Liver Qi moving.',
+   best:'1–3 AM (Liver time) · When frustrated · Before Mambo · Anytime you feel stuck'},
+  {name:'KD-3 (太谿)',loc:'Medial ankle, between medial malleolus and Achilles tendon',zone:'leg',organ:'Kidney',clock:'5–7 PM',emoji:'🫘',
+   why:'Source point of the Kidney — tonifies both KD Yin and Yang. Supports willpower, lower back, libido, and bone health.',
+   how:'Gentle circular pressure for 1–2 min each side. Best done seated.',
+   best:'5–7 PM (KD time) · Before bed · When depleted · Post-workout fatigue'},
+  {name:'PC-6 (內關)',loc:'Inner wrist, 2 cun (3 finger-widths) above wrist crease, between tendons',zone:'wrist',organ:'Pericardium',clock:'7–9 PM',emoji:'💜',
+   why:'The great calming point — nausea, anxiety, palpitations, insomnia. Opens the chest and calms the Shen. The Neiguan is one of the most clinically used points in the entire system.',
+   how:'Press firmly with opposite thumb. Hold for 1–2 min. Breathe slowly.',
+   best:'7–9 PM (PC time) · Before sleep · Anxiety attacks · After conflict'},
+  {name:'HT-7 (神門)',loc:'Wrist crease, ulnar side, in the depression at the pisiform bone',zone:'wrist',organ:'Heart',clock:'11 AM–1 PM',emoji:'❤️',
+   why:'Spirit Gate — the entry point to the Heart. Calms the Shen, treats insomnia, anxiety, palpitations, and emotional overwhelm.',
+   how:'Gentle sustained pressure, 1 min each side. Combine with PC-6 for deep calm.',
+   best:'Before sleep · Emotional dysregulation · Hypomania early signs · Exam anxiety'},
+  {name:'LU-7 (列缺)',loc:'Above the wrist on the radial side, 1.5 cun above wrist crease',zone:'wrist',organ:'Lung',clock:'3–5 AM',emoji:'🌬️',
+   why:'Confluent point of the Conception Vessel — opens the chest, descends Lung Qi, releases grief held in the body.',
+   how:'One thumb hooks over other wrist — where the index finger lands is LU-7. Press firmly.',
+   best:'3–5 AM if awake · Grief processing · Breathwork sessions · Skin issues'},
+  {name:'LI-4 (合谷)',loc:'Dorsum of hand, between 1st & 2nd metacarpal, midpoint of 2nd metacarpal',zone:'wrist',organ:'Large Intestine',clock:'5–7 AM',emoji:'💨',
+   why:'The command point for the face, head, and sensory organs. Moves stagnation throughout the entire upper body. Headache, constipation, immune boost.',
+   how:'Pinch firmly between thumb and index finger of opposite hand. Can be strong.',
+   best:'Morning constipation · Headaches · Immune support · 5–7 AM window'},
+  {name:'ST-36 (足三里)',loc:'3 cun below the lateral eye of the knee, one finger-width lateral to the tibia',zone:'leg',organ:'Stomach',clock:'7–9 AM',emoji:'🌾',
+   why:'The master tonification point of the entire body — builds Qi, Blood, and Wei Qi. Used for fatigue, digestive weakness, and general vitality.',
+   how:'Firm pressure or circular massage for 2–3 min each side. Can moxa this point.',
+   best:'Morning · Post-illness recovery · Digestive issues · Building overall vitality'},
+  {name:'SP-6 (三陰交)',loc:'3 cun above medial malleolus, on the posterior border of the tibia',zone:'leg',organ:'Spleen',clock:'9–11 AM',emoji:'🌀',
+   why:'Crossing point of SP, LV, KD — one of the most versatile points in TCM. Sleep, hormones, digestive issues, Blood deficiency, menstrual regulation.',
+   how:'Firm sustained pressure, 1–2 min. Avoid during pregnancy.',
+   best:'Sleep issues · Hormonal balance · Blood deficiency signs · Fatigue'},
+  {name:'BL-40 (委中)',loc:'Center of the popliteal crease (back of knee)',zone:'leg',organ:'Bladder',clock:'3–5 PM',emoji:'💧',
+   why:'Command point of the back — releases lumbar tension, sciatica, and stored emotional tension held in the spine and posterior chain.',
+   how:'Gentle pressure or massage — this area can be sensitive. Press and hold.',
+   best:'3–5 PM (BL time) · After sitting long · Lower back tension · Afternoon energy dip'},
+  {name:'GV-20 (百會)',loc:'Top of the head, at the intersection of midline and line connecting ear apices',zone:'head',organ:'Governing Vessel',clock:'All day',emoji:'👑',
+   why:'Meeting point of all Yang meridians — lifts the Shen, clears the mind, raises Yang when depleted. Used for brain fog, depression, prolapse patterns.',
+   how:'Gentle circular massage with fingertips. Can tap lightly.',
+   best:'Morning brain fog · Low mood · Before studying · Meditation sessions'},
+  {name:'GB-20 (風池)',loc:'At the base of the skull, in the depression between SCM and trapezius muscles',zone:'head',organ:'Gallbladder',clock:'11 PM–1 AM',emoji:'🌲',
+   why:'Wind Pool — releases exterior wind, headaches, neck tension, eye strain, and the emotional tightness of unexpressed decisions.',
+   how:'Press both sides simultaneously with thumbs, tilt head back slightly.',
+   best:'Headaches · Neck stiffness · Eye strain from screens · Before sleep'},
+  {name:'CV-17 (膻中)',loc:'Center of the sternum, at the level of the 4th intercostal space',zone:'torso',organ:'Pericardium',clock:'7–9 PM',emoji:'🫁',
+   why:'Sea of Qi and front Mu of the Pericardium — opens the chest, calms the heart, relieves emotional constriction, grief held in the chest.',
+   how:'Gentle circular pressure or tapping with fingertips. Breathe deeply while pressing.',
+   best:'Grief · Chest tightness · Emotional opening · Bolero practice · Evening wind-down'}
+];
+
+// ── TCM PATTERNS ──
+const TCM_PATTERNS = [
+  'Liver Qi Stagnation','Liver Blood Deficiency','Liver Yang Rising','Liver Fire',
+  'Kidney Yin Deficiency','Kidney Yang Deficiency','Kidney Jing Deficiency',
+  'Heart Qi Deficiency','Heart Blood Deficiency','Heart Fire','Heart Shen Disturbance',
+  'Spleen Qi Deficiency','Spleen Yang Deficiency','Dampness Accumulation','Phlegm-Damp',
+  'Lung Qi Deficiency','Lung Yin Deficiency','Wei Qi Deficiency',
+  'Blood Stagnation','Blood Deficiency','Qi Stagnation','Yang Deficiency','Yin Deficiency'
+];
+
+// ── DANCE PLAYLIST LINKER (added to dance data) ──
+const DANCE_PLAYLISTS = {
+  chacha: {label:'Cha Cha · 120 BPM', hint:'Search: "Cha Cha playlist 120 bpm" on Spotify'},
+  rumba:  {label:'Rumba · 96 BPM',    hint:'Search: "Rumba ballroom 96 bpm" on Spotify'},
+  swing:  {label:'Swing · 168 BPM',   hint:'Search: "East Coast Swing 168 bpm" on Spotify'},
+  bolero: {label:'Bolero · 84 BPM',   hint:'Search: "Bolero dance 84 bpm" on Spotify'},
+  mambo:  {label:'Mambo · 188 BPM',   hint:'Search: "Mambo 188 bpm Latin" on Spotify'}
+};
+
+// ── DASHBOARD ──
+function initDash() {
+  var now = new Date();
+  var h = now.getHours();
+  var greetings = h < 5 ? 'Still awake?' : h < 12 ? 'Good morning,' : h < 17 ? 'Good afternoon,' : 'Good evening,';
+  document.getElementById('dash-greeting').textContent = greetings + ' Jon.';
+  document.getElementById('dash-date').textContent = now.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'});
+
+  // Stats grid
+  var sleepLogs = JSON.parse(localStorage.getItem('groove-sleep') || '[]');
+  var lastSleep = sleepLogs[0];
+  var hk = 'groove-h-' + now.toISOString().slice(0,10);
+  var todayH = JSON.parse(localStorage.getItem(hk) || '{}');
+  var habitsDone = Object.values(todayH).filter(Boolean).length;
+  var energyLogs = JSON.parse(localStorage.getItem('groove-vl') || '[]');
+  var lastEnergy = energyLogs.find(l => l.type === 'energy');
+  var cur = CLOCK.find(o => o.h.includes(h)) || CLOCK[0];
+  // Moon
+  var knm = new Date('2000-01-06T18:14:00Z');
+  var phase = (((now - knm)/(1000*60*60*24)) % 29.53 + 29.53) % 29.53;
+  var mp = MOON.reduce((b,p) => Math.abs(phase-p.d) < Math.abs(phase-b.d) ? p : b, MOON[0]);
+
+  document.getElementById('dash-grid').innerHTML = [
+    {ico: lastSleep ? '😴' : '🌙', val: lastSleep ? lastSleep.hours + 'h' : '—', lbl: 'Last sleep', sec: 'sleep', accent: lastSleep && lastSleep.hours >= 7},
+    {ico: '⚡', val: lastEnergy ? lastEnergy.value + '/10' : '—', lbl: 'Last energy', sec: 'vibe', accent: false},
+    {ico: '✅', val: habitsDone + '/' + HABITS.length, lbl: 'Habits today', sec: 'habits', accent: habitsDone >= HABITS.length},
+    {ico: mp.e, val: mp.n.split(' ')[0] + ' ' + (mp.n.split(' ')[1]||''), lbl: 'Moon phase', sec: 'moon', accent: false}
+  ].map(c => `<div class="dash-card${c.accent?' accent':''}" onclick="sw('${c.sec}',document.querySelector('[data-s=${c.sec}]'))">
+    <div class="dash-card-ico">${c.ico}</div>
+    <div class="dash-card-val">${c.val}</div>
+    <div class="dash-card-lbl">${c.lbl}</div>
+  </div>`).join('');
+
+  // Habits
+  var hSaved = JSON.parse(localStorage.getItem(hk) || '{}');
+  document.getElementById('dash-habits').innerHTML = HABITS.map(h => {
+    var done = hSaved[h.id] || false;
+    return `<div class="dash-habit-row">
+      <div style="font-size:18px;width:28px">${h.i}</div>
+      <div style="font-size:14px;color:${done?'var(--t2)':'var(--tx2)'};flex:1;font-weight:${done?600:400}">${h.n}</div>
+      <div style="font-size:16px">${done ? '✓' : '○'}</div>
+    </div>`;
+  }).join('');
+
+  // Body clock now
+  document.getElementById('dash-clock').innerHTML = `
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <div style="font-size:32px;width:48px;height:48px;border-radius:12px;background:rgba(124,58,237,.15);display:flex;align-items:center;justify-content:center">${cur.e}</div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em">${now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:var(--tx)">${cur.o} Time</div>
+        <div style="font-size:12px;color:var(--tx3)">${cur.now.split('.')[0]}.</div>
+      </div>
+    </div>`;
+}
+
+// ── EXPORT / IMPORT ──
+function exportData() {
+  var keys = [
+    'groove-sleep','groove-journal','groove-dsessions','groove-vl',
+    'groove-wd','groove-playlists','groove-rev-hist','groove-tcm',
+    'groove-theme'
+  ];
+  // Also grab all habit keys
+  var allKeys = Object.keys(localStorage).filter(k => k.startsWith('groove-'));
+  var data = {};
+  allKeys.forEach(k => { try { data[k] = JSON.parse(localStorage.getItem(k)); } catch(e) { data[k] = localStorage.getItem(k); } });
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'groove-qi-backup-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  toast('Backup exported 💾');
+}
+
+function importData(input) {
+  var file = input.files[0]; if (!file) return;
+  var r = new FileReader();
+  r.onload = function(e) {
+    try {
+      var data = JSON.parse(e.target.result);
+      Object.keys(data).forEach(k => localStorage.setItem(k, typeof data[k] === 'string' ? data[k] : JSON.stringify(data[k])));
+      toast('Restored! Refreshing…');
+      setTimeout(() => location.reload(), 1200);
+    } catch(err) { toast('Could not restore: ' + err.message); }
+  };
+  r.readAsText(file);
+}
+
+// ── ACUPRESSURE ──
+var activeZone = 'all';
+function initPoints() {
+  document.getElementById('zone-tabs').innerHTML = ZONES.map(z =>
+    `<button class="zone-btn${z.id==='all'?' active':''}" onclick="filterZone('${z.id}',this)">${z.label}</button>`
+  ).join('');
+  renderPoints();
+}
+function filterZone(id, btn) {
+  activeZone = id;
+  document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPoints();
+}
+function renderPoints() {
+  var filtered = activeZone === 'all' ? POINTS : POINTS.filter(p => p.zone === activeZone);
+  document.getElementById('points-list').innerHTML = filtered.map((p,i) =>
+    `<div class="point-card">
+      <div class="point-hdr" onclick="togPoint(${i})">
+        <div class="point-ico">${p.emoji}</div>
+        <div style="flex:1">
+          <div class="point-name">${p.name}</div>
+          <div class="point-loc">${p.loc}</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:.5rem">
+          <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase">${p.organ}</div>
+          <div style="font-size:10px;color:var(--tx3);margin-top:2px">🕐 ${p.clock}</div>
+        </div>
+      </div>
+      <div class="point-body" id="pt${i}">
+        <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Why this point</div>
+        <div style="font-size:14px;color:var(--tx2);line-height:1.65;margin-bottom:.65rem">${p.why}</div>
+        <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">How to apply</div>
+        <div style="font-size:14px;color:var(--tx2);line-height:1.65;margin-bottom:.65rem">${p.how}</div>
+        <div style="background:var(--bg3);border-radius:10px;padding:.6rem .75rem">
+          <div style="font-size:10px;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Best used</div>
+          <div style="font-size:13px;color:var(--tx2)">${p.best}</div>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+}
+function togPoint(i) {
+  // Find by position in currently filtered list
+  var el = document.getElementById('pt' + i);
+  if (el) el.classList.toggle('open');
+}
+
+// ── TCM PATTERN JOURNAL ──
+function initTCM() {
+  document.getElementById('tcm-date').value = new Date().toISOString().slice(0,10);
+  document.getElementById('pattern-chips').innerHTML = TCM_PATTERNS.map(p =>
+    `<button class="chip" style="cursor:pointer;font-size:12px;padding:5px 12px" onclick="selectPattern('${p}',this)">${p}</button>`
+  ).join('');
+  renderTCMEntries();
+}
+var selectedPattern = '';
+function selectPattern(p, btn) {
+  selectedPattern = p;
+  document.querySelectorAll('#pattern-chips .chip').forEach(b => b.classList.remove('cv'));
+  btn.classList.add('cv');
+  document.getElementById('tcm-pattern-custom').value = p;
+}
+function saveTCM() {
+  var complaint = document.getElementById('tcm-complaint').value;
+  if (!complaint) { toast('Enter a chief complaint'); return; }
+  var entries = JSON.parse(localStorage.getItem('groove-tcm') || '[]');
+  entries.unshift({
+    date: document.getElementById('tcm-date').value,
+    complaint,
+    pattern: document.getElementById('tcm-pattern-custom').value || selectedPattern,
+    tongue: document.getElementById('tcm-tongue').value,
+    pulse: document.getElementById('tcm-pulse').value,
+    tx: document.getElementById('tcm-tx').value,
+    points: document.getElementById('tcm-points').value,
+    notes: document.getElementById('tcm-notes').value,
+    ts: Date.now()
+  });
+  localStorage.setItem('groove-tcm', JSON.stringify(entries.slice(0, 100)));
+  ['tcm-complaint','tcm-tongue','tcm-pulse','tcm-tx','tcm-points','tcm-notes','tcm-pattern-custom'].forEach(id => document.getElementById(id).value = '');
+  selectedPattern = '';
+  document.querySelectorAll('#pattern-chips .chip').forEach(b => b.classList.remove('cv'));
+  renderTCMEntries();
+  toast('Observation saved 📚');
+}
+function renderTCMEntries() {
+  var entries = JSON.parse(localStorage.getItem('groove-tcm') || '[]');
+  var el = document.getElementById('tcm-entries');
+  if (!entries.length) { el.innerHTML = '<div class="card" style="text-align:center;color:var(--tx3);font-size:14px">No observations yet.</div>'; return; }
+  el.innerHTML = entries.map((e,i) =>
+    `<div class="pattern-card">
+      <div class="pattern-hdr" onclick="togTCM(${i})">
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--tx2)">${e.date} · ${e.complaint}</div>
+          ${e.pattern ? `<span class="pattern-tag">${e.pattern}</span>` : ''}
+        </div>
+        <span style="color:var(--tx3);font-size:14px;margin-left:.5rem">›</span>
+      </div>
+      <div class="pattern-body" id="tcmb${i}">
+        ${e.pattern ? `<div class="jesec">Pattern</div><div class="jetxt">${e.pattern}</div>` : ''}
+        ${e.tongue ? `<div class="jesec">Tongue</div><div class="jetxt">${e.tongue}</div>` : ''}
+        ${e.pulse ? `<div class="jesec">Pulse</div><div class="jetxt">${e.pulse}</div>` : ''}
+        ${e.tx ? `<div class="jesec">Treatment principle</div><div class="jetxt">${e.tx}</div>` : ''}
+        ${e.points ? `<div class="jesec">Points / herbs</div><div class="jetxt">${e.points}</div>` : ''}
+        ${e.notes ? `<div class="jesec">Notes</div><div class="jetxt">${e.notes.replace(/\n/g,'<br>')}</div>` : ''}
+      </div>
+    </div>`
+  ).join('');
+}
+function togTCM(i) { document.getElementById('tcmb' + i).classList.toggle('open'); }
+
+// ── DANCE PLAYLIST LINKER ──
+// Inject into renderDP
+var _origRenderDP = renderDP;
+renderDP = function(i) {
+  _origRenderDP(i);
+  var d = DANCES[i];
+  var pl = DANCE_PLAYLISTS[d.id];
+  var saved = JSON.parse(localStorage.getItem('groove-dance-pl') || '{}');
+  var url = saved[d.id] || '';
+  var panel = document.getElementById('dance-panel');
+  panel.innerHTML += `<div class="card" style="margin-top:0">
+    <div style="font-size:11px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Playlist 🎧</div>
+    <div style="font-size:13px;color:var(--tx3);margin-bottom:.6rem">${pl.hint}</div>
+    <div style="display:flex;gap:.5rem">
+      <input type="url" class="inp" id="dpl-${d.id}" placeholder="Paste Spotify URL…" value="${url}" style="flex:1;font-size:13px">
+      <button class="btn bt" style="width:auto;padding:.65rem 1rem;font-size:13px" onclick="saveDancePL('${d.id}')">Save</button>
+    </div>
+    ${url ? `<button class="btn bp" style="margin-top:.5rem;font-size:13px" onclick="window.open('${url}','_blank')">▶ Open playlist</button>` : ''}
+  </div>`;
+};
+
+function saveDancePL(id) {
+  var url = document.getElementById('dpl-' + id).value.trim();
+  var saved = JSON.parse(localStorage.getItem('groove-dance-pl') || '{}');
+  saved[id] = url;
+  localStorage.setItem('groove-dance-pl', JSON.stringify(saved));
+  toast('Playlist saved 🎧');
+  renderDP(DANCES.findIndex(d => d.id === id));
+}
+
+// ── HOOK INTO sw() TO REFRESH DASH ──
+var _origSw = sw;
+sw = function(id, btn) {
+  _origSw(id, btn);
+  if (id === 'dash') initDash();
+};
+
+
+// ══════════════════════════════════════════
+// APOTHECARY DATA
+// ══════════════════════════════════════════
+const SUPPS_AM = [
+  {id:'ari',ico:'💊',name:'Aripiprazole 2mg',dose:'1 tab · with breakfast',why:'Mood stabilizer · dopamine modulator · prolactin normalizer'},
+  {id:'bpc',ico:'🧬',name:'BodyBio PC',dose:'2 caps · with food',why:'Liver cell membrane repair · targets FIB-4 recovery'},
+  {id:'tudca-am',ico:'🐻',name:'TUDCA Plus',dose:'1 cap · AM',why:'Liver protection · bile acid support · bilirubin reduction'},
+  {id:'ala-am',ico:'⚡',name:'ALAmax CR',dose:'1 tablet · 30 min BEFORE breakfast',why:'Antioxidant · liver + insulin support · take on empty stomach'},
+  {id:'nac-am',ico:'🛡️',name:'Augmented NAC',dose:'1 cap · AM',why:'Glutathione precursor · primary liver detoxifier'},
+  {id:'tongkat',ico:'🌿',name:'Tongkat Ali',dose:'2 caps · AM',why:'Lowers SHBG → frees testosterone · male vitality'},
+  {id:'d3k2',ico:'☀️',name:'Vitamin D3 + K2',dose:'1 cap · AM',why:'Addresses 29.3 ng/mL deficiency · K2 directs calcium to bones'},
+];
+const SUPPS_PM = [
+  {id:'tudca-pm',ico:'🐻',name:'TUDCA Plus',dose:'1 cap · PM',why:'Liver support overnight — repair is most active during sleep'},
+  {id:'ala-pm',ico:'⚡',name:'ALAmax CR',dose:'1 tablet · 30 min BEFORE dinner',why:'Steady antioxidant levels around the clock'},
+  {id:'nac-pm',ico:'🛡️',name:'Augmented NAC',dose:'1 cap · evening',why:'Maintains glutathione overnight for Liver time (1–3 AM)'},
+];
+const FORMULAS = [
+  {id:'lwdh',ico:'🫘',name:'Liu Wei Di Huang Wan',chinese:'六味地黃丸',dose:'Per label · with water',
+   pattern:'KD Yin Deficiency',indications:'Lower back weakness, night sweats, tinnitus, dry mouth, heel pain',
+   ingredients:'Rehmannia, Cornus, Dioscorea, Alisma, Poria, Moutan',
+   safety:'Safe with Aripiprazole · No lithium interaction concerns',mayway:'liu-wei-di-huang-wan'},
+  {id:'zycq',ico:'💧',name:'Zeng Ye Cheng Qi Tang',chinese:'增液承氣湯',dose:'Per label',
+   pattern:'Yin Deficiency with constipation / Heat in Stomach-Intestines',indications:'Dry constipation, thirst, dry throat, thin body',
+   ingredients:'Xuansheng, Ophiopogon, Rehmannia, Rhubarb, Natrium Sulfate',
+   safety:'Short term use · Avoid during diarrhea',mayway:'zeng-ye-cheng-qi-tang'},
+  {id:'xfs',ico:'🌸',name:'Xiao Feng San',chinese:'消風散',dose:'Per label',
+   pattern:'Wind-Heat or Wind-Damp with Blood Heat',indications:'Skin rash, eczema, psoriasis, itching, urticaria',
+   ingredients:'Schizonepeta, Ledebouriella, Sophora, Anemarrhena, Sesame, Licorice + more',
+   safety:'Safe with Aripiprazole · Good for your psoriasis pattern',mayway:'xiao-feng-san'},
+  {id:'ezw',ico:'🌑',name:'Er Zhi Wan',chinese:'二至丸',dose:'6 caps AM + 6 caps PM · size 00',
+   pattern:'Liver-Kidney Yin Deficiency',indications:'Hair loss, premature graying, tinnitus, blurred vision, lower back',
+   ingredients:'Nu Zhen Zi (Ligustrum) + Han Lian Cao (Eclipta)',
+   safety:'✅ Safe with Lithium — NOT a diuretic · Confirmed safe',mayway:'er-zhi-wan'},
+];
+const TEAS = [
+  {id:'gouqi',ico:'🔴',name:'Gou Qi Zi',chinese:'枸杞子',dose:'10–15 berries · steep 5 min',time:'Morning',
+   why:'Nourishes Liver and Kidney Yin · brightens the eyes · gentle daily tonic · supports your KD Yin pattern'},
+  {id:'juhua',ico:'🌼',name:'Ju Hua',chinese:'菊花',dose:'5–8 flowers · steep 3 min',time:'Morning',
+   why:'Disperses Wind-Heat · clears Liver Fire · soothes the eyes · great with screen exposure'},
+  {id:'puerh',ico:'☕',name:'Pu-erh',chinese:'普洱茶',dose:'3–5g · steep 30 sec–2 min',time:'Morning',
+   why:'Transforms Dampness · aids digestion · gentle caffeine · supports Spleen and Stomach'},
+];
+
+// ══════════════════════════════════════════
+// SOMATIC DATA
+// ══════════════════════════════════════════
+const SOMA_ZONES = {
+  'head':      {label:'Head',meridians:'GV-20, GB-20, BL-2',organ:'Liver · Gallbladder · Heart',point:'GV-20 (top of head) · GB-20 (base of skull)',tcm:'Head tension often reflects Liver Yang Rising or Heart Fire. Check: irritability, red eyes, bitter taste.'},
+  'neck':      {label:'Neck',meridians:'GB-21, BL-10, GV-14',organ:'Gallbladder · Bladder',point:'GB-21 (top of shoulder) · BL-10 (nape of neck)',tcm:'Neck tension = Wood element holding unexpressed decisions. The GB channel runs the neck. Ask: what am I not saying?'},
+  'shoulder':  {label:'Shoulder',meridians:'LI-15, TW-14, GB-21',organ:'Large Intestine · Triple Warmer',point:'GB-21 (shoulder well) — press firmly',tcm:'Shoulder tension classically linked to carrying too much responsibility (PC/TW pattern) or grief (LU/LI axis).'},
+  'chest':     {label:'Chest',meridians:'CV-17, LU-1, PC-1',organ:'Lung · Pericardium · Heart',point:'CV-17 (sternum center) · LU-1 (lateral chest)',tcm:'Chest constriction = Qi stagnation in the Lung or Pericardium. Grief, emotional guardedness, or held breath.'},
+  'upper-abd': {label:'Upper abdomen',meridians:'CV-12, ST-21, LV-13',organ:'Stomach · Spleen · Liver',point:'CV-12 (4 cun above navel) — gentle pressure',tcm:'Upper belly tension = Liver invading Stomach (stress eating, nausea, bloating). Earth-Wood conflict.'},
+  'lower-abd': {label:'Lower abdomen',meridians:'CV-4, CV-6, ST-25',organ:'Kidney · Bladder · Large Intestine',point:'CV-6 (1.5 cun below navel) — warm palm rest',tcm:'Lower belly = Root center. KD Qi deficiency, fear held in the lower Dan Tian. Warmth is medicine here.'},
+  'hip':       {label:'Hip / sacrum',meridians:'BL-23, BL-25, GB-30',organ:'Kidney · Bladder · Gallbladder',point:'BL-23 (2 cun lateral to L2) — lower back KD shu',tcm:'Hip tightness = Kidney deficiency pattern or Liver Qi stagnation in the GB channel. Lower back is the Palace of the Kidneys.'},
+  'thigh':     {label:'Thigh',meridians:'SP-10, ST-31, LV-10',organ:'Spleen · Stomach · Liver',point:'SP-10 (2 cun above patella, medial) — Blood Sea',tcm:'Inner thigh = SP/LV axis. Blood stagnation or Damp-Heat. SP-10 moves Blood and cools heat.'},
+  'knee':      {label:'Knee',meridians:'ST-35, BL-40, SP-9',organ:'Stomach · Bladder · Kidney',point:'BL-40 (back of knee) · SP-9 (medial below knee)',tcm:'Knee weakness = Kidney Qi/Yang deficiency. The knees are governed by the Kidneys. Lower back + knee together = classic KD pattern.'},
+  'lower-leg': {label:'Lower leg / calf',meridians:'BL-57, SP-6, KD-7',organ:'Bladder · Spleen · Kidney',point:'SP-6 (3 cun above medial malleolus) — three Yin crossing',tcm:'Calf tension = BL channel holding stored stress. SP-6 addresses SP, LV, KD simultaneously — one of the most versatile points.'},
+  'foot':      {label:'Foot',meridians:'LV-3, KD-1, SP-4',organ:'Liver · Kidney · Spleen',point:'LV-3 (between 1st-2nd metatarsal) · KD-1 (sole of foot)',tcm:'KD-1 is the first point of the Kidney meridian — Bubbling Spring. Grounds Yang energy downward. LV-3 moves stagnation.'},
+  'wrist':     {label:'Wrist / forearm',meridians:'PC-6, HT-7, LU-7, LI-4',organ:'Pericardium · Heart · Lung',point:'PC-6 (inner wrist) · HT-7 (ulnar wrist crease)',tcm:'Wrist and forearm hold the Heart and Pericardium channels. Tension here = emotional holding, unexpressed feeling.'},
+  'arm':       {label:'Upper arm',meridians:'LU-5, LI-11, HT-3',organ:'Lung · Large Intestine · Heart',point:'LI-11 (lateral elbow crease) — reduces heat and inflammation',tcm:'Upper arm = Metal element channel pathway. LI-11 is powerful for Heat patterns, skin issues, and immune activation.'},
+};
+var somaMode = 'tension';
+var somaLog = [];
+
+function setSomaMode(mode, btn) {
+  somaMode = mode;
+  document.querySelectorAll('#soma-mode-btns .zone-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function somaClick(zone) {
+  var z = SOMA_ZONES[zone];
+  if (!z) return;
+  // Clear previous
+  document.querySelectorAll('.bzone').forEach(el => { el.classList.remove('active','tension','pain'); });
+  // Mark active zones
+  document.querySelectorAll(`[data-zone="${zone}"], [data-zone="l-${zone}"], [data-zone="r-${zone}"]`).forEach(el => {
+    el.classList.add(somaMode === 'pain' ? 'pain' : 'tension');
+  });
+  var modeLabels = {tension:'Tension',pain:'Pain',numb:'Numbness',heat:'Heat',cold:'Cold'};
+  var result = document.getElementById('soma-result');
+  result.classList.add('show');
+  result.innerHTML = `
+    <div style="font-size:12px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">${modeLabels[somaMode]} · ${z.label}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Meridians</div>
+    <div style="font-size:14px;color:var(--tx2);margin-bottom:.5rem">${z.meridians}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Organ system</div>
+    <div style="font-size:14px;color:var(--tx2);margin-bottom:.5rem">${z.organ}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Point to press</div>
+    <div style="font-size:14px;color:var(--tx2);margin-bottom:.65rem">${z.point}</div>
+    <div style="background:var(--bg3);border-radius:10px;padding:.65rem .75rem;font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:.65rem">${z.tcm}</div>
+    <button class="btn bt" onclick="logSoma('${zone}','${somaMode}')">Log this sensation</button>`;
+
+  // Save to log
+}
+function logSoma(zone, mode) {
+  var z = SOMA_ZONES[zone];
+  var logs = JSON.parse(localStorage.getItem('groove-soma') || '[]');
+  logs.unshift({zone: z.label, mode, organ: z.organ, point: z.point, ts: Date.now(), date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'})});
+  localStorage.setItem('groove-soma', JSON.stringify(logs.slice(0,50)));
+  renderSomaLog();
+  toast('Sensation logged 🫀');
+}
+function renderSomaLog() {
+  var logs = JSON.parse(localStorage.getItem('groove-soma') || '[]');
+  var el = document.getElementById('soma-log');
+  if (!logs.length) { el.innerHTML = '<div class="card" style="text-align:center;color:var(--tx3);font-size:14px">No entries yet.</div>'; return; }
+  el.innerHTML = '<div class="card"><div>' + logs.slice(0,8).map(l =>
+    `<div class="loge"><div class="logd">${l.date}</div><div><div style="font-size:14px;font-weight:600;color:var(--tx)">${l.mode} · ${l.zone}</div><div style="font-size:12px;color:var(--tx3)">${l.organ} · ${l.point}</div></div></div>`
+  ).join('') + '</div></div>';
+}
+
+// ══════════════════════════════════════════
+// KOREAN MEDICINE
+// ══════════════════════════════════════════
+const SASANG = [
+  {name:'Taeyang',ko:'태양인',emoji:'🦅',
+   strength:'Lung · creative force · social charisma',weakness:'Liver · fatigue · digestive fragility',
+   emotion:'Anger (excess) → pride, grandiosity if imbalanced',diet:'Cold, light foods · seafood · buckwheat · grapes',
+   desc:'Rarest constitution. Strong social and creative energy but prone to Liver deficiency. High vision, can lose connection to the body.'},
+  {name:'Taeeum',ko:'태음인',emoji:'🌳',
+   strength:'Liver · endurance · accumulation of resources',weakness:'Lung · respiratory issues · sweating disorders',
+   emotion:'Greed / ambition (excess) → hoarding, anxiety if imbalanced',diet:'Cooked, warm foods · beef · wheat · nuts · lotus root',
+   desc:'Most common constitution. Strong, steady, accumulative. Prone to Dampness and respiratory weakness. Benefits from regular sweating and movement.'},
+  {name:'Soyang',ko:'소양인',emoji:'🔥',
+   strength:'Spleen · fast processing · social agility',weakness:'Kidney · depletes quickly · overheats',
+   emotion:'Fear of losing face (excess) → impulsiveness, burnout',diet:'Cool, fresh foods · vegetables · pork · oysters',
+   desc:'Quick thinker, strong digestion, socially energetic. Prone to KD depletion and Heat patterns. Needs cooling and grounding.'},
+  {name:'Soeum',ko:'소음인',emoji:'🌊',
+   strength:'Kidney · deep reserves · careful planning',weakness:'Spleen · cold digestion · low energy',
+   emotion:'Sorrow/worry (excess) → isolation, digestive collapse',diet:'Warm, tonifying foods · chicken · ginger · garlic · rice',
+   desc:'Methodical, reserved, deep. Cold digestion is the primary concern — warm foods and herbs essential. Needs warmth, consistency, and support.'},
+];
+const DONGUI = [
+  {ko:'心者，君主之官，神明出焉',en:'The Heart is the sovereign organ — from it, the spirit and clarity emerge.',src:'동의보감 · 내경편 (Internal Canon)'},
+  {ko:'怒傷肝，喜傷心，思傷脾，憂傷肺，恐傷腎',en:'Anger injures the Liver. Joy (excess) injures the Heart. Pensiveness injures the Spleen. Worry injures the Lung. Fear injures the Kidney.',src:'동의보감 · 오장론 (Five Organ Theory)'},
+  {ko:'精者，身之本也',en:'Jing (essence) is the root of the body. Guard it as you would guard life itself.',src:'동의보감 · 정기론 (Essence Theory)'},
+  {ko:'上工治未病',en:'The superior physician treats disease before it arises.',src:'동의보감 · 인용 황제내경 (citing Huangdi Neijing)'},
+  {ko:'氣血充足，百病不生',en:'When Qi and Blood are abundant and flowing, no disease can arise.',src:'동의보감 · 기혈론'},
+  {ko:'飮食有節，起居有常',en:'Eat with moderation. Live with rhythm. These are the roots of long life.',src:'동의보감 · 양생편 (Nourishing Life)'},
+];
+const MYEONG = [
+  {ko:'一日不念善，諸惡自皆起',en:'If for even one day you do not think of goodness, all evils will arise of themselves.',src:'명심보감 · 계선편'},
+  {ko:'知足者，貧賤亦樂。不知足者，富貴亦憂',en:'Those who know contentment find joy even in poverty. Those who do not know contentment worry even in wealth.',src:'명심보감 · 안분편'},
+  {ko:'勿以善小而不爲，勿以惡小而爲之',en:'Do not refrain from a good deed because it is small. Do not commit an evil deed because it is small.',src:'명심보감 · 계선편'},
+  {ko:'身有傷，貽親憂',en:'When the body is harmed, parents grieve. To care for yourself is to honor those who love you.',src:'명심보감 · 효행편'},
+  {ko:'學而不思則罔，思而不學則殆',en:'Learning without reflection is wasted. Reflection without learning is dangerous.',src:'명심보감 · 인용 공자'},
+];
+
+function initKorean() {
+  document.getElementById('sasang-cards').innerHTML = SASANG.map((s,i) =>
+    `<div class="sas-card" onclick="togSasang(${i})">
+      <div style="display:flex;align-items:center;gap:.75rem">
+        <div style="font-size:32px">${s.emoji}</div>
+        <div style="flex:1">
+          <div class="sas-name">${s.name}</div>
+          <div class="sas-korean">${s.ko}</div>
+        </div>
+        <span style="color:var(--tx3);font-size:14px" id="sas-arr-${i}">›</span>
+      </div>
+      <div id="sas-body-${i}" style="display:none;margin-top:.75rem">
+        <div style="font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:.65rem">${s.desc}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.65rem">
+          <div style="background:var(--bg3);border-radius:10px;padding:.6rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;margin-bottom:.25rem">Strength</div><div style="font-size:12px;color:var(--tx2)">${s.strength}</div></div>
+          <div style="background:var(--bg3);border-radius:10px;padding:.6rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--rose2,#fb7185);text-transform:uppercase;margin-bottom:.25rem">Weakness</div><div style="font-size:12px;color:var(--tx2)">${s.weakness}</div></div>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Diet</div>
+        <div style="font-size:13px;color:var(--tx2);margin-bottom:.5rem">${s.diet}</div>
+        <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Emotional pattern</div>
+        <div style="font-size:13px;color:var(--tx2)">${s.emotion}</div>
+      </div>
+    </div>`
+  ).join('');
+
+  document.getElementById('dongui-wisdom').innerHTML = DONGUI.map(w =>
+    `<div class="wisdom-card">
+      <div class="wisdom-ko">${w.ko}</div>
+      <div class="wisdom-en">${w.en}</div>
+      <div class="wisdom-src">${w.src}</div>
+    </div>`
+  ).join('');
+
+  document.getElementById('myeong-wisdom').innerHTML = MYEONG.map(w =>
+    `<div class="wisdom-card" style="border-left-color:var(--t2)">
+      <div class="wisdom-ko">${w.ko}</div>
+      <div class="wisdom-en">${w.en}</div>
+      <div class="wisdom-src">${w.src}</div>
+    </div>`
+  ).join('');
+}
+
+function togSasang(i) {
+  var body = document.getElementById('sas-body-' + i);
+  var arr = document.getElementById('sas-arr-' + i);
+  var open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  arr.style.transform = open ? '' : 'rotate(90deg)';
+}
+
+// ══════════════════════════════════════════
+// QI GONG
+// ══════════════════════════════════════════
+const QIGONG_TIMES = ['Morning','Midday','Evening','Anytime'];
+const QIGONG = [
+  {name:'Eight Brocades — Opening',time:'Morning',organ:'Lung · Large Intestine',duration:'8 min',emoji:'🌅',
+   why:'The Ba Duan Jin (八段錦) is the most practiced Qi Gong sequence in classical Chinese medicine. The opening exercises activate Lung and LI Qi for the day.',
+   steps:[
+     {n:'Two Hands Hold Up the Heavens',d:'Stand with feet shoulder-width. Interlace fingers, inhale as you raise arms overhead, palms to sky. Hold 3 sec, exhale as you lower. 8 reps. Stretches the Triple Warmer and opens the chest.'},
+     {n:'Drawing the Bow',d:'Step wide. Cross arms at chest, then extend one arm as if drawing a bow — index finger points, gaze follows. Alternate sides, 8 reps each. Opens Lung and Heart Qi.'},
+     {n:'Separate Heaven and Earth',d:'One palm pushes up, one pushes down. Alternate 8 times. Harmonizes Stomach and Spleen — best done before or after breakfast.'},
+   ]},
+  {name:'Kidney Breathing',time:'Evening',organ:'Kidney · Bladder',duration:'5 min',emoji:'🫘',
+   why:'The Kidneys store Jing and govern the breath at the deepest level. This practice tonifies KD Qi and prepares the body for the 5–7 PM kidney peak.',
+   steps:[
+     {n:'Root standing',d:'Stand with feet shoulder-width, knees slightly bent. Hands rest on lower back (KD area). Close eyes. Feel the weight of your body drop into the ground. 2 min.'},
+     {n:'KD breathing',d:'Inhale deeply into the lower back — imagine the kidneys expanding. Exhale completely. 20 slow breaths. If you feel warmth in the lower back, the Qi is moving.'},
+     {n:'KD-3 acupressure',d:'Sit and press KD-3 (medial ankle) on both sides simultaneously. Hold firm pressure for 1 min while breathing slowly into the lower abdomen.'},
+   ]},
+  {name:'Liver Qi Release',time:'Morning',organ:'Liver · Gallbladder',duration:'7 min',emoji:'🌿',
+   why:'Moving the Liver in the morning prevents stagnation from building throughout the day. This sequence is your somatic Mambo — anger into motion.',
+   steps:[
+     {n:'Side stretches',d:'Arms overhead, lean side to side. Feel the stretch along the lateral ribcage — the GB channel. 8 reps each side, exhale on the stretch.'},
+     {n:'Spinal twist',d:'Seated or standing: rotate torso left, then right. Eyes follow, arms swing freely. 16 reps. Wrings Liver Qi stagnation from the torso.'},
+     {n:'Eye rolling',d:'The Liver opens to the eyes. Roll eyes in slow circles, both directions, 5 reps each. Then palm the eyes (warm palms over closed eyelids) for 1 min.'},
+     {n:'LV-3 self-massage',d:'Sit and massage LV-3 on both feet simultaneously. Press firmly for 60 sec. Feel any emotional release — let it move.'},
+   ]},
+  {name:'Heart Coherence Practice',time:'Midday',organ:'Heart · Pericardium',duration:'10 min',emoji:'❤️',
+   why:'The noon Heart peak (11 AM–1 PM) is the optimal time for Shen-calming practice. Coherence breathing + gentle movement harmonizes the Heart-Kidney axis.',
+   steps:[
+     {n:'Coherence breath',d:'5 sec inhale, 5 sec exhale. 5 min. Place one hand on heart, one on lower abdomen. Feel both move.'},
+     {n:'Heart tapping',d:'Gently tap the center of the chest (CV-17) with fingertips in a slow rhythm. 2 min. Activates Heart Qi and opens the Pericardium.'},
+     {n:'Gratitude anchor',d:'While tapping, bring to mind one genuine moment of gratitude. Let it fill the chest. This is Heart Qi cultivation — not metaphor, literal medicine.'},
+   ]},
+  {name:'Spleen Earth Grounding',time:'Anytime',organ:'Spleen · Stomach',duration:'5 min',emoji:'🌾',
+   why:'When the mind races, the Spleen is overwhelmed. This short practice returns Qi to the Earth center and quiets overthinking.',
+   steps:[
+     {n:'Belly breathing',d:'Hands on belly. Inhale, belly expands. Exhale, belly falls. 10 slow breaths. This directly tonifies Spleen Qi.'},
+     {n:'ST-36 massage',d:'Find ST-36 (3 cun below lateral eye of knee). Massage both legs simultaneously in circular motion for 2 min. The master tonification point.'},
+     {n:'Grounding stamp',d:'Stand and gently stamp feet alternately, feeling the connection to the ground. 1 min. Roots Earth element Qi.'},
+   ]},
+];
+
+var activeQGTime = 'Morning';
+function initQigong() {
+  document.getElementById('qg-tabs').innerHTML = QIGONG_TIMES.map(t =>
+    `<button class="tbtn${t==='Morning'?' active':''}" onclick="filterQG('${t}',this)">${t}</button>`
+  ).join('');
+  renderQG();
+}
+function filterQG(time, btn) {
+  activeQGTime = time;
+  document.querySelectorAll('#qg-tabs .tbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderQG();
+}
+function renderQG() {
+  var filtered = activeQGTime === 'Anytime' ? QIGONG : QIGONG.filter(q => q.time === activeQGTime || q.time === 'Anytime');
+  if (!filtered.length) filtered = QIGONG;
+  document.getElementById('qg-list').innerHTML = filtered.map((q,i) =>
+    `<div class="qg-card">
+      <div class="qg-hdr" onclick="togQG(${i})">
+        <div style="font-size:28px;width:48px;height:48px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-shrink:0">${q.emoji}</div>
+        <div style="flex:1">
+          <div style="font-size:15px;font-weight:700;color:var(--tx)">${q.name}</div>
+          <div style="font-size:12px;color:var(--tx3);margin-top:2px">${q.organ} · ${q.duration}</div>
+        </div>
+        <span style="color:var(--tx3);font-size:14px" id="qgarr${i}">›</span>
+      </div>
+      <div class="qg-body" id="qgb${i}">
+        <div style="font-size:14px;color:var(--tx2);line-height:1.65;margin-bottom:.75rem">${q.why}</div>
+        ${q.steps.map((s,j) => `<div class="qg-step"><div class="qg-step-num">${j+1}</div><div><div style="font-size:14px;font-weight:600;color:var(--tx);margin-bottom:.25rem">${s.n}</div><div style="font-size:13px;color:var(--tx2);line-height:1.6">${s.d}</div></div></div>`).join('')}
+      </div>
+    </div>`
+  ).join('');
+}
+function togQG(i) {
+  var b = document.getElementById('qgb'+i); var a = document.getElementById('qgarr'+i);
+  var open = b.classList.contains('open');
+  b.classList.toggle('open');
+  a.style.transform = open ? '' : 'rotate(90deg)';
+}
+
+// ══════════════════════════════════════════
+// HERBS
+// ══════════════════════════════════════════
+const SYMPTOMS = [
+  'Fatigue','Irritability','Anxiety','Insomnia','Night sweats','Lower back pain',
+  'Hair loss','Dry eyes','Constipation','Skin rash/itch','Brain fog','Low libido',
+  'Palpitations','Poor appetite','Bloating','Mood swings'
+];
+const FORMULA_MATCHES = {
+  'Fatigue,Lower back pain,Hair loss': 'Er Zhi Wan — KD Yin Deficiency pattern. Your primary formula.',
+  'Fatigue,Lower back pain,Night sweats': 'Liu Wei Di Huang Wan — Classic KD Yin tonic.',
+  'Irritability,Mood swings,Constipation': 'Zeng Ye Cheng Qi Tang — Heat and Yin deficiency with bowel stagnation.',
+  'Skin rash/itch': 'Xiao Feng San — Wind-Heat or Wind-Damp skin pattern.',
+  'Anxiety,Insomnia,Palpitations': 'Consider: Suan Zao Ren Tang (safe with your meds) — Heart Blood deficiency.',
+  'Bloating,Poor appetite,Fatigue': 'Si Jun Zi Tang base — Spleen Qi deficiency. Check with Dr. Lau.',
+};
+var selectedSymptoms = new Set();
+
+function initHerbs() {
+  document.getElementById('symptom-chips').innerHTML = SYMPTOMS.map(s =>
+    `<button class="chip" style="cursor:pointer;font-size:12px;padding:5px 12px" onclick="togSymptom('${s}',this)">${s}</button>`
+  ).join('');
+  renderCabinet();
+  renderSingleHerbs();
+}
+function togSymptom(s, btn) {
+  if (selectedSymptoms.has(s)) { selectedSymptoms.delete(s); btn.classList.remove('cv'); }
+  else { selectedSymptoms.add(s); btn.classList.add('cv'); }
+  matchFormula();
+}
+function matchFormula() {
+  var el = document.getElementById('formula-match');
+  if (!selectedSymptoms.size) { el.style.display = 'none'; return; }
+  var syms = Array.from(selectedSymptoms);
+  var best = '';
+  Object.keys(FORMULA_MATCHES).forEach(key => {
+    var needed = key.split(',');
+    if (needed.every(n => syms.includes(n))) best = FORMULA_MATCHES[key];
+  });
+  // Fallback
+  if (!best && syms.length) {
+    var matched = FORMULAS.filter(f => syms.some(s => f.indications.toLowerCase().includes(s.toLowerCase())));
+    best = matched.length ? matched.map(f => f.name + ' — ' + f.pattern).join(' · ') : 'No exact match — discuss with Dr. Lau at your next session.';
+  }
+  el.style.display = 'block';
+  el.innerHTML = '<b style="color:var(--v3)">Suggested:</b> ' + best;
+}
+function renderCabinet() {
+  var savedPL = JSON.parse(localStorage.getItem('groove-formula-pl') || '{}');
+  document.getElementById('herb-cabinet').innerHTML = FORMULAS.map((f,i) =>
+    `<div class="point-card">
+      <div class="point-hdr" onclick="togFormula(${i})">
+        <div class="point-ico">${f.ico}</div>
+        <div style="flex:1">
+          <div class="point-name">${f.name}</div>
+          <div style="font-size:12px;color:var(--tx3);margin-top:2px">${f.chinese} · ${f.pattern}</div>
+        </div>
+        <span style="color:var(--tx3);font-size:14px;margin-left:.5rem">›</span>
+      </div>
+      <div class="point-body" id="fml${i}">
+        <div style="font-size:10px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Indications</div>
+        <div style="font-size:14px;color:var(--tx2);line-height:1.6;margin-bottom:.5rem">${f.indications}</div>
+        <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Dosage</div>
+        <div style="font-size:14px;color:var(--tx2);margin-bottom:.5rem">${f.dose}</div>
+        <div style="font-size:10px;font-weight:700;color:var(--v3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.3rem">Ingredients</div>
+        <div style="font-size:13px;color:var(--tx2);margin-bottom:.5rem">${f.ingredients}</div>
+        <div style="background:rgba(13,148,136,.1);border-radius:10px;padding:.6rem .75rem;font-size:13px;color:var(--t2);margin-bottom:.65rem">🛡️ ${f.safety}</div>
+        <div style="display:flex;gap:.5rem">
+          <input type="url" class="inp" id="fpl-${f.id}" placeholder="Mayway URL…" value="${savedPL[f.id]||''}" style="flex:1;font-size:13px">
+          <button class="btn bt" style="width:auto;padding:.6rem .9rem;font-size:13px" onclick="saveFormulaLink('${f.id}')">Save</button>
+        </div>
+        ${savedPL[f.id] ? `<button class="btn bp" style="margin-top:.5rem;font-size:13px" onclick="window.open('${savedPL[f.id]}','_blank')">🛒 Open on Mayway</button>` : ''}
+      </div>
+    </div>`
+  ).join('');
+}
+function togFormula(i) { document.getElementById('fml'+i).classList.toggle('open'); }
+function saveFormulaLink(id) {
+  var url = document.getElementById('fpl-'+id).value.trim();
+  var saved = JSON.parse(localStorage.getItem('groove-formula-pl') || '{}');
+  saved[id] = url; localStorage.setItem('groove-formula-pl', JSON.stringify(saved));
+  renderCabinet(); toast('Mayway link saved 🛒');
+}
+function renderSingleHerbs() {
+  document.getElementById('single-herbs').innerHTML = [
+    {ico:'🔴',name:'Gou Qi Zi',chinese:'枸杞子',actions:'Nourishes LV & KD Yin · brightens eyes · tonifies Blood',safety:'Safe · daily use ok · avoid if feverish'},
+    {ico:'🌼',name:'Ju Hua',chinese:'菊花',actions:'Disperses Wind-Heat · clears LV Fire · cools eyes',safety:'Safe · avoid in cold-deficiency patterns'},
+    {ico:'☕',name:'Pu-erh',chinese:'普洱茶',actions:'Transforms Dampness · aids SP/ST digestion · gentle stimulant',safety:'Safe · reduce if insomnia worsens'},
+    {ico:'🌿',name:'He Huan Hua',chinese:'合歡花',actions:'Calms Shen · relieves constraint · lifts mood gently',safety:'✅ Confirmed safe with Lithium'},
+    {ico:'🌱',name:'Suan Zao Ren',chinese:'酸棗仁',actions:'Nourishes Heart Blood · calms Shen · treats insomnia',safety:'✅ Confirmed safe with Lithium'},
+    {ico:'🌾',name:'Da Zao',chinese:'大棗',actions:'Tonifies SP Qi · nourishes Blood · harmonizes formulas',safety:'✅ Confirmed safe with Lithium'},
+    {ico:'🍵',name:'Ge Gen',chinese:'葛根',actions:'Releases muscle tension · lifts clear Yang · neck/shoulder relief',safety:'✅ Confirmed safe with Lithium'},
+    {ico:'💧',name:'Mai Men Dong',chinese:'麥門冬',actions:'Nourishes Lung & Stomach Yin · clears deficiency heat · moistens',safety:'✅ Confirmed safe with Lithium'},
+  ].map(h =>
+    `<div class="card" style="margin-bottom:.5rem">
+      <div style="display:flex;align-items:center;gap:.65rem">
+        <div style="font-size:24px">${h.ico}</div>
+        <div style="flex:1">
+          <div style="font-size:15px;font-weight:700;color:var(--tx)">${h.name} <span style="font-size:13px;color:var(--v3)">${h.chinese}</span></div>
+          <div style="font-size:13px;color:var(--tx2);margin-top:3px;line-height:1.5">${h.actions}</div>
+          <div style="font-size:11px;color:var(--t2);margin-top:3px">${h.safety}</div>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+// ══════════════════════════════════════════
+// APOTHECARY
+// ══════════════════════════════════════════
+function getSuppKey() { return 'groove-supps-' + new Date().toISOString().slice(0,10); }
+function initApoth() { renderSupps(); }
+function renderSupps() {
+  var saved = JSON.parse(localStorage.getItem(getSuppKey()) || '{}');
+  function renderList(items, elId) {
+    document.getElementById(elId).innerHTML = items.map(s => {
+      var done = saved[s.id] || false;
+      return `<div class="supp-row${done?' taken':''}" onclick="togSupp('${s.id}',this)">
+        <div class="supp-ico">${s.ico}</div>
+        <div style="flex:1">
+          <div class="supp-name">${s.name}</div>
+          <div class="supp-dose">${s.dose}</div>
+          <div class="supp-why">${s.why}</div>
+        </div>
+        <div class="supp-chk">${done?'✓':''}</div>
+      </div>`;
+    }).join('');
+  }
+  renderList(SUPPS_AM, 'supp-am');
+  renderList(SUPPS_PM, 'supp-pm');
+
+  var savedFL = JSON.parse(localStorage.getItem('groove-formula-pl') || '{}');
+  document.getElementById('supp-formulas').innerHTML = FORMULAS.map(f => {
+    var done = saved[f.id] || false;
+    return `<div class="supp-row${done?' taken':''}" onclick="togSupp('${f.id}',this)">
+      <div class="supp-ico">${f.ico}</div>
+      <div style="flex:1">
+        <div class="supp-name">${f.name}</div>
+        <div class="supp-dose">${f.dose}</div>
+        <div class="supp-why">${f.pattern}</div>
+      </div>
+      <div class="supp-chk">${done?'✓':''}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('supp-teas').innerHTML = TEAS.map(t => {
+    var done = saved[t.id] || false;
+    return `<div class="supp-row${done?' taken':''}" onclick="togSupp('${t.id}',this)">
+      <div class="supp-ico">${t.ico}</div>
+      <div style="flex:1">
+        <div class="supp-name">${t.name} ${t.chinese}</div>
+        <div class="supp-dose">${t.dose} · ${t.time}</div>
+        <div class="supp-why">${t.why}</div>
+      </div>
+      <div class="supp-chk">${done?'✓':''}</div>
+    </div>`;
+  }).join('');
+}
+function togSupp(id, el) {
+  var key = getSuppKey();
+  var saved = JSON.parse(localStorage.getItem(key) || '{}');
+  saved[id] = !saved[id]; localStorage.setItem(key, JSON.stringify(saved));
+  el.classList.toggle('taken');
+  el.querySelector('.supp-chk').textContent = saved[id] ? '✓' : '';
+  if (saved[id]) toast('✓ Taken');
+}
+function resetSupps() { localStorage.removeItem(getSuppKey()); renderSupps(); toast('Reset for tomorrow ⚗️'); }
+
+// ══════════════════════════════════════════
+// NOTIFICATIONS
+// ══════════════════════════════════════════
+function requestNotifPerms() {
+  if (!('Notification' in window)) { toast('Notifications not supported'); return; }
+  Notification.requestPermission().then(p => {
+    if (p === 'granted') { toast('Notifications enabled ✅'); scheduleNotifs(); }
+    else toast('Notifications blocked');
+  });
+}
+function scheduleNotifs() {
+  // Use setTimeout-based reminders for the current session
+  var now = new Date();
+  var reminders = [
+    {hour:8, min:0, msg:'🌅 Morning stack time! Open The Apothecary.'},
+    {hour:9, min:0, msg:'🫁 SP peak (9–11 AM) — best time to study. Open VUIM notes!'},
+    {hour:12, min:0, msg:'❤️ Heart time · Rest your eyes · Short nap if possible.'},
+    {hour:21, min:0, msg:'🌙 Wind-down time. TW peak — be in bed by 10 PM.'},
+    {hour:21, min:30, msg:'💊 Evening stack! TUDCA PM · ALAmax · NAC'},
+  ];
+  reminders.forEach(r => {
+    var target = new Date(now);
+    target.setHours(r.hour, r.min, 0, 0);
+    var delay = target - now;
+    if (delay > 0 && delay < 24*60*60*1000) {
+      setTimeout(() => {
+        if (Notification.permission === 'granted') {
+          new Notification('Groove Is in the Qi 🎵', {body: r.msg, icon: '/groove-is-in-the-qi/icon-192.png'});
+        }
+      }, delay);
+    }
+  });
+}
+// Auto-schedule if already permitted
+if (typeof Notification !== 'undefined' && Notification.permission === 'granted') scheduleNotifs();
+
+// Hook into sw() for new tabs
+var __origSw = sw;
+sw = function(id, btn) {
+  __origSw(id, btn);
+  if (id === 'dash') initDash();
+  if (id === 'soma') renderSomaLog();
+  if (id === 'korean') initKorean();
+  if (id === 'qigong') initQigong();
+  if (id === 'herbs') initHerbs();
+  if (id === 'apoth') initApoth();
+};
+
+// ── INIT NEW SECTIONS ──
+initPoints();
+initTCM();
+initApoth();
+renderSomaLog();
+// Set today date default
+(function(){var d=document.getElementById("tcm-date");if(d)d.value=new Date().toISOString().slice(0,10);})();
+</script></body></html>

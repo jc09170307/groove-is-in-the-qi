@@ -1,0 +1,50 @@
+{
+  "name": "Groove Is in the Qi",
+  "short_name": "Groove Qi",
+  "description": "Dance · Sleep · Journal · Habits · Vibe — DAcHM Lifestyle Suite",
+  "start_url": "/groove-is-in-the-qi/",
+  "scope": "/groove-is-in-the-qi/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#09090f",
+  "theme_color": "#7c3aed",
+  "lang": "en",
+  "categories": ["health", "lifestyle", "music"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dance",
+      "short_name": "Dance",
+      "description": "Open Dance tab",
+      "url": "/groove-is-in-the-qi/?tab=dance",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Journal",
+      "short_name": "Journal",
+      "description": "Open Journal tab",
+      "url": "/groove-is-in-the-qi/?tab=journal",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Sleep",
+      "short_name": "Sleep",
+      "description": "Open Sleep tab",
+      "url": "/groove-is-in-the-qi/?tab=sleep",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
